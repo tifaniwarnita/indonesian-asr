@@ -1,0 +1,5 @@
+`julia prompts2wlist.jl all-transcript.txt wlist`
+
+The first column of the all-transcript.txt file contains the name of the audio file to be created, and the following columns contain the text transcriptions of what to be recorded in the audio file. The Julia script prompts2wlist.jl can take the all-transcript.txt file you just created, and remove the file name in the first column and print each word on one line into a word list file (wlist). 
+
+Download Julia: http://julialang.org/downloads/
