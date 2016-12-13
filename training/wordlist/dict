@@ -615,6 +615,7 @@ belokan         b e l o k a n
 belon           b @ l o n
 belon           b e l o n
 belum           b e l u m
+belum-belum     b e l u m b e l u m
 bem             b @ m
 benar           b e n a r
 benar-benar     b e n a r b e n a r
@@ -3467,6 +3468,7 @@ kosong          k o s o ng
 kostrad         k o s t r a d
 kota            k o t a
 kotamadya       k o t a m a d i a
+kotor           k o t o r
 kpk             k a p
 kpk             k a p e k a
 krayan          k r a y a n
@@ -4463,6 +4465,7 @@ menyesalkan     m @ ny @ s a l k a n
 menyesuaikan    m @ ny @ s u a i k a n
 menyesuaikan    m @ ny @ s u ai k a n
 menyetel        m @ ny @ t e l
+menyetopnya     m @ ny @ t o p ny a
 menyetujui      m @ ny @ t u j u i
 menyewa         m @ ny @ w a
 menyewa         m @ ny e w a
@@ -6431,8 +6434,6 @@ senjata         s @ n j a t a
 seno            s e n o
 sensor          s e n s o r
 sensornya       s e n s o r ny a
-SENT-END        sil
-SENT-START      sil
 sentimen        s e n t i m e n
 sentral         s e n t r a l
 sentralisme     s e n t r a l i s m @
@@ -6563,7 +6564,6 @@ silakan         s i l a k a n
 silam           s i l a m
 silatnas        s i l a t n a s
 silaturahmi     s i l a t u r a h m i
-silence         sil
 silitonga       s i l i t o ng a
 siliwangi       s i l i w a ng i
 siloam          s i l o a m
