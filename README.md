@@ -32,3 +32,9 @@
     `HERest -A -D -T 1 -C config/conf-train -I wordlist/phones0.mlf -t 250.0 150.0 1000.0 -S files/train_sanitize.scp -H hmm5/macros -H hmm5/hmmdefs -M hmm6 wordlist/monophones0`
     
     `HERest -A -D -T 1 -C config/conf-train -I wordlist/phones0.mlf -t 250.0 150.0 1000.0 -S files/train_sanitize.scp -H hmm6/macros -H hmm6/hmmdefs -M hmm7 wordlist/monophones0`
+    
+    5. Silence
+    
+    --- disini adalagi tapi lupa ---
+    
+    HERest -A -D -T 1 -C config/conf-train -I wordlist/phones0.mlf -t 250.0 150.0 3000.0 -S files/train_sanitize.scp -H hmm9/macros -H hmm9/hmmdefs -M hmm10 wordlist/monophones1
