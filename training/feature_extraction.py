@@ -10,18 +10,11 @@ from subprocess import call
 
 USAGE = """
 Usage:
-	python feature_extraction.py [$folder_path] [--debug]
+	python feature_extraction.py [$dataset_folder] [--debug]
 
 Example:
 	python feature_extraction.py dataset/train
-
-You may need:
-	- HTK
-	- conf file
-	- .wav files
-
-For all wav files in the dataset folder, this script will:
-	-"""
+"""
 
 MFC_EXTENSION = '.mfc'
 
@@ -31,14 +24,29 @@ def print_debug(debug, string):
 
 def process(folder, debug):
 	# run through all the folders and files in the path "folder"
+	codetrscp_content = ''
+	trainscp_content = ''
 	for bdir, _, files in os.walk(folder):
 		for fname in files:
 			if fname[-4:] != '.wav':
 				continue
 			wav_fname = bdir + '/' + fname
 			mfcc_fname = bdir + '/' + fname[:-4] + MFC_EXTENSION
-			call(['HCopy', '-C', 'conf', wav_fname, mfcc_fname])
+			codetrscp_content += wav_fname + ' ' + mfcc_fname + '\n'
+			trainscp_content += mfcc_fname + '\n'
 			util.print_debug(debug, "Dealt with file '"+ wav_fname + "'")
+	
+	# listing all .wav for mfcc extraction process
+	f = open('files/codetr.scp','w')
+	f.write(str(codetrscp_content))
+	f.close()
+
+	# listing all .mfc for modelling process
+	f = open('files/train.scp','w')
+	f.write(str(trainscp_content))
+	f.close()
+
+	call(['HCopy', '-C', 'config/conf-extraction', '-S', 'files/codetr.scp'])
 
 
 if len(sys.argv) > 1:
