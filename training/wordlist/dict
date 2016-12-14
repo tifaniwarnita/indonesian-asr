@@ -6434,6 +6434,8 @@ senjata         s @ n j a t a
 seno            s e n o
 sensor          s e n s o r
 sensornya       s e n s o r ny a
+SENT-END		sil
+SENT-START		sil
 sentimen        s e n t i m e n
 sentral         s e n t r a l
 sentralisme     s e n t r a l i s m @
@@ -6564,6 +6566,7 @@ silakan         s i l a k a n
 silam           s i l a m
 silatnas        s i l a t n a s
 silaturahmi     s i l a t u r a h m i
+silence 		sil
 silitonga       s i l i t o ng a
 siliwangi       s i l i w a ng i
 siloam          s i l o a m
