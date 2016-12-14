@@ -13,17 +13,44 @@
     
   2. Wordlist 
     
-    `HDMan -m -w wordlist/wlist -n monophones1 -l dlog dict wordlist/lexicon.txt` (GAUSAH LAGI)
+    `HDMan -m -w wordlist/wlist -n monophones1 -l dlog dict wordlist/indonesian.lex`
+
+    Edit "dict" by adding
+    SENT-END    sil
+    SENT-START  sil
+    silence     sil
+
+    at the correct position (remain sorted)
+
+    Jalankan `python mlf.py`
+
+    Create following edit script "mkphones0.led" containing:
+    EX
+    IS sil sil
+    DE sp
     
     Window: `HLEd -l * -d wordlist/dict -i wordlist/phones0.mlf wordlist/mkphones0.led wordlist/words_sanitize.mlf` (INI IYA)
     
     Ubuntu: `HLEd -l '*' -d wordlist/dict -i wordlist/phones0.mlf wordlist/mkphones0.led wordlist/words_sanitize.mlf` (INI IYA)
 
+    (disini bakal kobam dan ketahuan mana aja kata-kata yang ga ada di wlist dan dict, jadi harus crosscheck sampe bener)
+    (ERROR [+6550]  LoadHTKLabels: Junk at end of HTK transcription -> jangan lupa hapus spasi doang 1 line, hapus dengan regex `^\n` )
+    (ERROR [+6550]  LoadHTKList: Label Name Expected -> ini karena ada yang angka)
+    (ERROR [+1232]  NumParts: Cannot find word %s in dictionary -> mangat nguli)
+
+    beres semua error diatas,
+    `python sanitizer.py`
+    buat ngebersihin si mlf dan scp dari suara yang samsek ga ada di dict
+    bakal ngeluarin scp dan mlf yang _sanitize
+
   3. HMM0-Init
   
     `mkdir hmm0`
     
-    `HCompV -C config/conf-train -f 0.01 -m -S files/train.scp -M hmm0 files/proto.hmm`
+    `HCompV -C config/conf-train -f 0.01 -m -S files/train_sanitize.scp -M hmm0 files/proto.hmm`
+
+    Create monophones0 dengan menggunakan monophones1 tanpa menggunakan entri 'sp'
+    Lalu bikin file hmmdefs dan macros
    
   4. Create Model
   
@@ -93,6 +120,11 @@
            0.0 0.0 0.0`
           
        2. HHed
+           Create the "sil.hed" script containing:
+            `AT 2 4 0.2 {sil.transP}
+            AT 4 2 0.2 {sil.transP}
+            AT 1 3 0.3 {sp.transP}
+            TI silst {sil.state[3],sp.state[2]}`
        
           `mkdir hmm9`
           
@@ -100,9 +132,9 @@
           
        3. HRest 2x
        
-          Windows: `HLEd -l * -d wordlist/dict -i wordlist/phones1.mlf wordlist/mkphones0.led wordlist/words_sanitize.mlf`
+          Windows: `HLEd -l * -d wordlist/dict -i wordlist/phones1.mlf wordlist/mkphones1.led wordlist/words_sanitize.mlf`
           
-          Ubuntu: `HLEd -l '*' -d wordlist/dict -i wordlist/phones1.mlf wordlist/mkphones0.led wordlist/words_sanitize.mlf`
+          Ubuntu: `HLEd -l '*' -d wordlist/dict -i wordlist/phones1.mlf wordlist/mkphones1.led wordlist/words_sanitize.mlf`
           
           `mkdir hmm10`
           
