@@ -164,28 +164,24 @@
           
           `HERest -A -D -T 1 -C config/conf-train  -I wordlist/aligned.mlf -t 250.0 150.0 3000.0 -S files/train_sanitize.scp -H hmm12/macros -H  hmm12/hmmdefs -M hmm13 wordlist/monophones1`
         
+        
+`cd ..`
+
+`mkdir decoder`
+
+`cd decoder` (`indonesian-asr/decoder`)
+
     7. Recognizer evaluation
+    
+       1. Install Julius (http://julius.osdn.jp/en_index.php)
+       2. Download SLRIM (http://www.speech.sri.com/projects/srilm/)
+       3. Buat LM:
+       4. Buat AM: `mkbinhmm -htkconf ../training/config/conf-train ../training/hmm12/hmmdefs julius.am`
+    
+        Install HDecode: `nmake /f htk_hdecode_nt.mkf all`
        
         `mkdir result`
         
-        `HVite -A -D -T 1 -H hmm13/macros -H hmm13/hmmdefs -C config/conf-test -S files/test_sanitize.scp -l * -i result/recout.mlf -w lm/lm.arpa -p 0.0 -s 5.0 wordlist/dict wordlist/monophones1`
+        `HDecode -A -D -T 1 -H hmm13/macros -H hmm13/hmmdefs -C config/conf-test -S files/test_sanitize.scp -l * -i result/recout.mlf -w lm/lm.arpa -p 0.0 -s 5.0 wordlist/dict wordlist/monophones1`
         
         Windows: `HVite -H hmm13/macros -H hmm13/hmmdefs -S files/test_sanitize.scp -l * -i result/recout.mlf -w ../lm/lm.arpa -p 0.0 -s 5.0 wordlist/dict wordlist/monophones1`
-
-## Web
-   Make sure that your computer have [node js](https://nodejs.org/en/download/)
-
-### Run the Program
-   1. Make sure you are in web folder using `cd web`
-   2. Open node.js terminal (in Windows) or normal terminal (in Linux) 
-   3. Type `node index.js`
-   4. Open your browser and type `localhost:8800`
-   5. Make sure you allow microphone in the browser  
-   6. Click button `Start Recording` for record and `Stop Recording` for stop and save the file in *web/demo.wav*
-   7. Play the sound demo.wav with your application
-
-If you can't run the program, you need to install this modules:
-   1. `npm install express`
-   2. `npm install jade`
-   3. `npm install binaryjs`
-   4. `npm install wav`
