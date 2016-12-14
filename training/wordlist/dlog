@@ -1,5 +1,5 @@
 WARNING: no script file global.ded
-WARNING: no script file lexicon.txt.ded
+WARNING: no script file wordlist/indonesian.lex.ded
 Missing Words
 -------------
 1945
@@ -104,7 +104,7 @@ yuamazidah
 Dictionary Usage Statistics
 ---------------------------
   Dictionary    TotalWords WordsUsed  TotalProns PronsUsed
- lexicon.txt    179178       7172     182613       7811
+indonesian.l    179178       7172     182613       7811
         dict      7172       7172       7811       7811
 
 7270 words required, 98 missing
