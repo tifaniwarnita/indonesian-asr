@@ -163,6 +163,26 @@
           `mkdir hmm13`
           
           `HERest -A -D -T 1 -C config/conf-train  -I wordlist/aligned.mlf -t 250.0 150.0 3000.0 -S files/train_sanitize.scp -H hmm12/macros -H  hmm12/hmmdefs -M hmm13 wordlist/monophones1`
+          
+          `mkdir hmm14`
+          
+          `HERest -A -D -T 1 -C config/conf-train  -I wordlist/aligned.mlf -t 250.0 150.0 3000.0 -S files/train_sanitize.scp -H hmm13/macros -H  hmm13/hmmdefs -M hmm14 wordlist/monophones1`
+          
+          `mkdir hmm15`
+          
+          `HERest -A -D -T 1 -C config/conf-train  -I wordlist/aligned.mlf -t 250.0 150.0 3000.0 -S files/train_sanitize.scp -H hmm14/macros -H  hmm14/hmmdefs -M hmm15 wordlist/monophones1`
+          
+          `mkdir hmm16`
+          
+          `HERest -A -D -T 1 -C config/conf-train  -I wordlist/aligned.mlf -t 250.0 150.0 3000.0 -S files/train_sanitize.scp -H hmm15/macros -H  hmm15/hmmdefs -M hmm16 wordlist/monophones1`
+          
+          `mkdir hmm17`
+          
+          `HERest -A -D -T 1 -C config/conf-train  -I wordlist/aligned.mlf -t 250.0 150.0 3000.0 -S files/train_sanitize.scp -H hmm16/macros -H  hmm16/hmmdefs -M hmm17 wordlist/monophones1`
+          
+          `mkdir hmm18`
+          
+          `HERest -A -D -T 1 -C config/conf-train  -I wordlist/aligned.mlf -t 250.0 150.0 3000.0 -S files/train_sanitize.scp -H hmm17/macros -H  hmm17/hmmdefs -M hmm18 wordlist/monophones1`
         
         
 `cd ..`
