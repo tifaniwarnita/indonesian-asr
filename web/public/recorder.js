@@ -3,6 +3,10 @@
 
   client.on('open', function() {
     window.Stream = client.createStream();
+	window.Stream.on('data', function(data){
+console.log(data);
+          document.getElementById("output").innerHTML = data;
+    });
 
     if (!navigator.getUserMedia)
       navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia ||
@@ -20,6 +24,7 @@
       document.getElementById("start").style.display = "none";
       document.getElementById("stop").style.display = "block";
       recording = true;
+document.getElementById("output").innerHTML = "Recording..."
     }
 
     window.stopRecording = function() {
@@ -27,6 +32,7 @@
       document.getElementById("stop").style.display = "none";
       recording = false;
       window.Stream.end();
+	document.getElementById("output").innerHTML = "Loading..."
     }
 
     function success(e) {
