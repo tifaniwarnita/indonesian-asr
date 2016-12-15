@@ -152,7 +152,7 @@
    6. Click button `Start Recording` for record and `Stop Recording` for stop and save the file in *web/demo.wav*
    7. Play the sound demo.wav with your application
 
-   If you can't run the program, you need to install this modules:
+If you can't run the program, you need to install this modules:
    1. `npm install express`
    2. `npm install jade`
    3. `npm install binaryjs`
