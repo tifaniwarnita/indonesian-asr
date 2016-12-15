@@ -1,0 +1,21 @@
+doctype
+html
+    head
+        title= "Stream to Wav"
+        link(href='style.css', rel='stylesheet')
+        link(href="https://fonts.googleapis.com/css?family=Source+Sans+Pro", rel="stylesheet")
+        script(src="https://cdn.jsdelivr.net/binaryjs/0.2.1/binary.min.js")
+	script(src="//code.jquery.com/jquery.min.js")
+	script(type='text/javascript' src='/nquery.js')
+    body
+        div(id="record-container")
+            div(id="start")
+                a(onclick="startRecording()" href="#" class="record-button")
+                div Click to Start
+            div(id="stop" style="display:none")
+                a(onclick="stopRecording()" href="#" class="record-button")
+                div Click to Stop
+            hr
+            div(id="output")
+        script(src="recorder.js")
+        img(src="img/cat.png" id="cat-background")
