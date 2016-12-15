@@ -1,0 +1,48 @@
+WARNING: no script file dict.ded
+
+Dictionary Usage Statistics
+---------------------------
+  Dictionary    TotalWords WordsUsed  TotalProns PronsUsed
+        dict      7175       7175       7814       7814
+    dict-tri      7175       7175       7814       7814
+
+7175 words required, 0 missing
+
+New Phone Usage Counts
+---------------------
+  1. sil   :     3
+  2. a     :  8684
+  3. sp    :  7811
+  4. b     :  1486
+  5. d     :  1650
+  6. i     :  4280
+  7. ai    :   199
+  8. k     :  2598
+  9. n     :  3625
+ 10. ng    :  1188
+ 11. y     :   375
+ 12. s     :  2608
+ 13. @     :  3029
+ 14. l     :  1931
+ 15. u     :  2611
+ 16. h     :  1125
+ 17. r     :  3166
+ 18. m     :  2545
+ 19. p     :  1697
+ 20. o     :  1954
+ 21. e     :  2062
+ 22. g     :   720
+ 23. ny    :   605
+ 24. t     :  2424
+ 25. z     :   183
+ 26. c     :   409
+ 27. kh    :   109
+ 28. w     :   460
+ 29. j     :   593
+ 30. f     :   587
+ 31. sy    :   121
+ 32. q     :    10
+ 33. oi    :    21
+ 34. au    :    79
+
+Dictionary dict-tri created

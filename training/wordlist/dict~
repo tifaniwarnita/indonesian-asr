@@ -1,5 +1,3 @@
-SENT-END        sil
-SENT-START      sil
 a               a
 abad            a b a d
 abadi           a b a d i
@@ -6436,6 +6434,8 @@ senjata         s @ n j a t a
 seno            s e n o
 sensor          s e n s o r
 sensornya       s e n s o r ny a
+SENT-END        sil
+SENT-START      sil
 sentimen        s e n t i m e n
 sentral         s e n t r a l
 sentralisme     s e n t r a l i s m @
