@@ -143,7 +143,7 @@
 ## Web
    Make sure that your computer have [node js](https://nodejs.org/en/download/)
 
-   ### Run the Program
+### Run the Program
    1. Make sure you are in web folder using `cd web`
    2. Open node.js terminal (in Windows) or normal terminal (in Linux) 
    3. Type `node index.js`
