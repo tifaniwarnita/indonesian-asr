@@ -17,10 +17,14 @@
     var recording = false;
 
     window.startRecording = function() {
+      document.getElementById("start").style.display = "none";
+      document.getElementById("stop").style.display = "block";
       recording = true;
     }
 
     window.stopRecording = function() {
+      document.getElementById("start").style.display = "block";
+      document.getElementById("stop").style.display = "none";
       recording = false;
       window.Stream.end();
     }

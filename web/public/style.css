@@ -1,0 +1,52 @@
+body {
+	color: #898989;
+	background-color: #4CC79E;
+	font-family: 'Source Sans Pro',sans-serif;
+}
+#start,#stop {
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 20px;
+}
+.record-button {
+	display: block;
+	width: 100px;
+	height: 100px;
+	margin: auto;
+
+}
+#start .record-button,#stop .record-button:hover {
+	background-image: url('img/record_pink.png');
+}
+#stop .record-button,#start .record-button:hover {
+	background-image: url('img/record_red.png');
+}
+
+#record-container {
+	position: absolute;
+	top: 5vh;
+	height:80vh;
+	left: 5%;
+	width: 60%;
+	background-color: #FDFEFE;
+	border-radius: 30px;
+	text-align: center;
+	padding: 20px;
+}
+#cat-background {
+	position: absolute;
+	right: 5%;
+	top: 20vh;
+}
+hr {
+	margin: 20px;
+	border-top: 1px dashed #4CC79E;
+	border-bottom: none;
+}
+#output {
+	display:block;
+	width: 95%;
+	margin: auto;
+	max-height: 45vh;
+	overflow-y: auto;
+}
