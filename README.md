@@ -169,9 +169,31 @@
 
 `mkdir decoder`
 
-`cd decoder` (`indonesian-asr/decoder`)
+`cd decoder` (indonesian-asr/decoder)
 
     7. Recognizer evaluation
+    
+        # Tanpa LM GRAM
+
+        HBuild wordlist/wlist_sanitize result/network.w
+
+        HVite -H hmm18/macros -H hmm18/hmmdefs -S files/train_sanitize.scp -l '*' -i result/recout_nogram.mlf -p 0.0 -s 5.0 -w result/network.w wordlist/dict wordlist/monophones1
+
+        HResults -I wordlist/words_sanitize.mlf wordlist/monophones1 result/recout_nogram.mlf
+
+        # Dengan LM GRAM
+
+        HBuild wordlist/wlist_sanitize result/network.w -n lm/lm.arpa
+
+        HVite -H hmm18/macros -H hmm18/hmmdefs -S files/train_sanitize.scp -l '*' -i result/recout_gram.mlf -p 0.0 -s 5.0 -w result/network.w wordlist/dict wordlist/monophones1
+
+        HResults -I wordlist/words_sanitize.mlf wordlist/monophones1 result/recout_gram.mlf
+    
+    
+    
+    
+    
+    8. Decoder
     
        1. Install Julius (http://julius.osdn.jp/en_index.php)
        2. Download SLRIM (http://www.speech.sri.com/projects/srilm/)
@@ -185,3 +207,12 @@
         `HDecode -A -D -T 1 -H hmm13/macros -H hmm13/hmmdefs -C config/conf-test -S files/test_sanitize.scp -l * -i result/recout.mlf -w lm/lm.arpa -p 0.0 -s 5.0 wordlist/dict wordlist/monophones1`
         
         Windows: `HVite -H hmm13/macros -H hmm13/hmmdefs -S files/test_sanitize.scp -l * -i result/recout.mlf -w ../lm/lm.arpa -p 0.0 -s 5.0 wordlist/dict wordlist/monophones1`
+        
+        
+        
+        8. STEP 9
+        
+        Windows: HLEd -A -D -T 1 -n wordlist/mktri.led -l * -i wordlist/wintri.mlf wordlist/mktri.led wordlist/aligned.mlf
+        
+        HHEd -A -D -T 1 -H hmm18/macros -H hmm18/hmmdefs -M hmm19 wordlistmktri.hed wordlist/monophones1 
+
