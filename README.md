@@ -139,3 +139,21 @@
         `HVite -A -D -T 1 -H hmm13/macros -H hmm13/hmmdefs -C config/conf-test -S files/test_sanitize.scp -l * -i result/recout.mlf -w lm/lm.arpa -p 0.0 -s 5.0 wordlist/dict wordlist/monophones1`
         
         Windows: `HVite -H hmm13/macros -H hmm13/hmmdefs -S files/test_sanitize.scp -l * -i result/recout.mlf -w ../lm/lm.arpa -p 0.0 -s 5.0 wordlist/dict wordlist/monophones1`
+
+## Web
+   Make sure that your computer have [node js](https://nodejs.org/en/download/)
+
+   ### Run the Program
+   1. Make sure you are in web folder using `cd web`
+   2. Open node.js terminal (in Windows) or normal terminal (in Linux) 
+   3. Type `node index.js`
+   4. Open your browser and type `localhost:8800`
+   5. Make sure you allow microphone in the browser  
+   6. Click button `Start Recording` for record and `Stop Recording` for stop and save the file in *web/demo.wav*
+   7. Play the sound demo.wav with your application
+
+   If you can't run the program, you need to install this modules:
+   1. `npm install express`
+   2. `npm install jade`
+   3. `npm install binaryjs`
+   4. `npm install wav`
