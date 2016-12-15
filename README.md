@@ -157,3 +157,4 @@ If you can't run the program, you need to install this modules:
    2. `npm install jade`
    3. `npm install binaryjs`
    4. `npm install wav`
+   5. `npm install recordrtc`
