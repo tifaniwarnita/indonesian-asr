@@ -1,0 +1,39 @@
+#
+# Sample Jconf configuration file
+# for Julius library rev.4.3
+######################################################################
+
+####
+#### misc.
+####
+# !!!!!! VoxForge change
+#-outprobout filename		# save computed outprob vectors to HTK file (for debug)
+# !!!!!! 
+
+# VoxForge configurations:
+#  -dfa sample.dfa     # finite state automaton grammar file
+-d julius.gram
+-v indonesian-sanitized.lex      # pronunciation dictionary
+-h hmmdefs-trifon    # acoustic HMM (ascii or Julius binary)
+-hlist tiedlist     # HMMList to map logical phone to physical
+-smpFreq 48000	    # sampling rate (Hz)
+-spmodel "sp"		    # name of a short-pause silence model
+# -multipath          # force enable MULTI-PATH model handling
+#-gprune safe        # Gaussian pruning method
+# -iwcd1 max          # Inter-word triphone approximation method
+# -iwsppenalty -70.0	# transition penalty for the appended sp models
+#-iwsp			          # append a skippable sp model at all word ends
+#-penalty1 5.0		    # word insertion penalty for grammar (pass1)
+#-penalty2 20.0	    # word insertion penalty for grammar (pass2)
+#-b2 200             # beam width on 2nd pass (#words)
+#-sb 200.0		        # score beam envelope threshold
+#-n 1                # num of sentences to find
+
+# you may need to adjust your "-lv" value to prevent the recognizer inadvertently 
+# recognizing non-speech sounds:
+#-lv 4000			# level threshold (0-32767)
+
+# comment these out for debugging:
+#-logfile julius.log
+#-quiet
+# !!!!!!

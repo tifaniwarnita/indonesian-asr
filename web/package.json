@@ -8,7 +8,9 @@
     "express": "^4.14.0",
     "fs": "0.0.1-security",
     "jade": "^1.11.0",
-    "recordrtc": "^5.4.0"
+    "recordrtc": "^5.4.0",
+    "child_process": "~1.0.2",
+    "nodeQuery": "0.0.9-1"
   },
   "devDependencies": {},
   "scripts": {

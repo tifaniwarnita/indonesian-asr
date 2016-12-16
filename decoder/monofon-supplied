@@ -1,0 +1,377 @@
+STAT: include config: decoder-conf-monofon
+STAT: jconf successfully finalized
+STAT: *** loading AM00 _default
+Stat: init_phmm: Reading in HMM definition
+Stat: rdhmmdef: ascii format HMM definition
+Stat: rdhmmdef: limit check passed
+Stat: check_hmm_restriction: an HMM with several arcs from initial state found: "sp"
+Stat: rdhmmdef: this HMM requires multipath handling at decoding
+Stat: init_phmm: defined HMMs:    34
+Stat: init_phmm: logical names:    34
+Stat: init_phmm: base phones:    34 used in logical
+Stat: init_phmm: finished reading HMM definitions
+STAT: *** AM00 _default loaded
+STAT: *** loading LM00 _default
+Stat: init_voca: read 182669 words
+Stat: init_ngram: reading in binary n-gram from julius.gram
+Stat: ngram_read_bin_v5: this is forward 3-gram file
+stat: ngram_read_bin_v5: reading 1-gram
+stat: ngram_read_bin_v5: reading 2-gram
+stat: ngram_read_bin_v5: reading 3-gram
+Stat: ngram_read_bin: making entry name index
+Stat: init_ngram: found unknown word entry "<unk>"
+Stat: init_ngram: finished reading n-gram
+Stat: init_ngram: mapping dictonary words to n-gram entries
+Warning: ngram_lookup: "!sil" not exist in N-gram, treat as unknown
+Stat: init_ngram: finished word-to-ngram mapping
+Warning: BOS word "<s>" has unigram prob of "-99"
+Warning: assigining value of EOS word "</s>": -1.591803
+STAT: *** LM00 _default loaded
+STAT: ------
+STAT: All models are ready, go for final fusion
+STAT: [1] create MFCC extraction instance(s)
+STAT: *** create MFCC calculation modules from AM
+STAT: AM 0 _default: create a new module MFCC01
+STAT: 1 MFCC modules created
+STAT: [2] create recognition processing instance(s) with AM and LM
+STAT: composing recognizer instance SR00 _default (AM00 _default, LM00 _default)
+STAT: Building HMM lexicon tree
+STAT: lexicon size: 1671380 nodes
+STAT: coordination check passed
+STAT: make successor lists for unigram factoring
+STAT: done
+STAT:  1-gram factoring values has been pre-computed
+STAT: SR00 _default composed
+STAT: [3] initialize for acoustic HMM calculation
+Stat: outprob_init: state-level mixture PDFs, use calc_mix()
+Stat: addlog: generating addlog table (size = 1953 kB)
+Stat: addlog: addlog table generated
+STAT: [4] prepare MFCC storage(s)
+STAT: All init successfully done
+
+STAT: ###### initialize input device
+----------------------- System Information begin ---------------------
+JuliusLib rev.4.2.1 (fast)
+
+Engine specification:
+ -  Base setup   : fast
+ -  Supported LM : DFA, N-gram, Word
+ -  Extension    : WordsInt LibSndFile
+ -  Compiled by  : gcc -g -O2
+
+------------------------------------------------------------
+Configuration of Modules
+
+ Number of defined modules: AM=1, LM=1, SR=1
+
+ Acoustic Model (with input parameter spec.):
+ - AM00 "_default"
+	hmmfilename=hmmdefs-monofon
+
+ Language Model:
+ - LM00 "_default"
+	vocabulary filename=indonesian.lex
+	n-gram  filename=julius.gram (binary format)
+
+ Recognizer:
+ - SR00 "_default" (AM00, LM00)
+
+------------------------------------------------------------
+Speech Analysis Module(s)
+
+[MFCC01]  for [AM00 _default]
+
+ Acoustic analysis condition:
+	       parameter = MFCC_0_D_A (39 dim. from 12 cepstrum + c0)
+	sample frequency = 16000 Hz
+	   sample period =  625  (1 = 100ns)
+	     window size =  400 samples (25.0 ms)
+	     frame shift =  160 samples (10.0 ms)
+	    pre-emphasis = 0.97
+	    # filterbank = 24
+	   cepst. lifter = 22
+	      raw energy = False
+	energy normalize = False
+	    delta window = 2 frames (20.0 ms) around
+	      acc window = 2 frames (20.0 ms) around
+	     hi freq cut = OFF
+	     lo freq cut = OFF
+	 zero mean frame = OFF
+	       use power = OFF
+	             CVN = OFF
+	            VTLN = OFF
+    spectral subtraction = off
+  cepstral normalization = no
+	 base setup from = Julius defaults
+
+------------------------------------------------------------
+Acoustic Model(s)
+
+[AM00 "_default"]
+
+ HMM Info:
+    34 models, 99 states, 99 mpdfs, 99 Gaussians are defined
+	      model type = context dependency handling OFF
+      training parameter = MFCC_D_A_0
+	   vector length = 39
+	number of stream = 1
+	     stream info = [0-38]
+	cov. matrix type = DIAGC
+	   duration type = NULLD
+	max mixture size = 1 Gaussians
+     max length of model = 5 states
+     logical base phones = 34
+       model skip trans. = exist, require multi-path handling
+      skippable models = sp (1 model(s))
+
+ AM Parameters:
+        Gaussian pruning = none (full computation)  (-gprune)
+    short pause HMM name = "sp" specified, "sp" applied (physical)  (-sp)
+  cross-word CD on pass1 = handle by approx. (use 3-best of same LC)
+   sp transition penalty = -1.0
+
+------------------------------------------------------------
+Language Model(s)
+
+[LM00 "_default"] type=n-gram
+
+ N-gram info:
+	            spec = 3-gram, forward (left-to-right)
+	        OOV word = <unk>(id=32)
+	        OOV size = 2 words in dict
+	    wordset size = 179235
+	  1-gram entries =     179235  (  1.4 MB)
+	  2-gram entries =    2026095  ( 23.8 MB) (15% are valid contexts)
+	  3-gram entries =     958584  (  9.4 MB)
+	           pass1 = 2-gram in the forward n-gram
+
+ Vocabulary Info:
+        vocabulary size  = 182669 words, 1472868 models
+        average word len = 8.1 models, 24.2 states
+       maximum state num = 276 nodes per word
+       transparent words = not exist
+       words under class = not exist
+
+ Parameters:
+	(-silhead)head sil word = 182667: "<s> @0.000000 [<s>] sil(sil)"
+	(-siltail)tail sil word = 182668: "</s> @0.000000 [</s>] sil(sil)"
+
+------------------------------------------------------------
+Recognizer(s)
+
+[SR00 "_default"]  AM00 "_default"  +  LM00 "_default"
+
+ Lexicon tree:
+	 total node num = 1671380
+	  root node num =    183
+	(148 hi-freq. words are separated from tree lexicon)
+	  leaf node num = 182669
+	 fact. node num = 182669
+
+ Inter-word N-gram cache: 
+	root node to be cached = 150 / 183 (isolated only)
+	word ends to be cached = 179235 (all)
+	  max. allocation size = 107MB
+	(-lmp)  pass1 LM weight = 5.0  ins. penalty = -1.0
+	(-lmp2) pass2 LM weight = 6.0  ins. penalty = +0.0
+	(-transp)trans. penalty = +0.0 per word
+	(-cmalpha)CM alpha coef = 0.050000
+
+ Search parameters: 
+	    multi-path handling = yes, multi-path mode enabled
+	(-b) trellis beam width = 400 (-1 or not specified - guessed)
+	(-bs)score pruning thres= disabled
+	(-n)search candidate num= 1
+	(-s)  search stack size = 500
+	(-m)    search overflow = after 2000 hypothesis poped
+	        2nd pass method = searching sentence, generating N-best
+	(-b2)  pass2 beam width = 30
+	(-lookuprange)lookup range= 5  (tm-5 <= t <tm+5)
+	(-sb)2nd scan beamthres = 80.0 (in logscore)
+	(-n)        search till = 1 candidates found
+	(-output)    and output = 1 candidates out of above
+	 factoring score: 1-gram prob. (statically assigned beforehand)
+	short pause segmentation = off
+	fall back on search fail = off, returns search failure
+
+------------------------------------------------------------
+Decoding algorithm:
+
+	1st pass input processing = buffered, batch
+	1st pass method = 1-best approx. generating indexed trellis
+	output word confidence measure based on search-time scores
+
+------------------------------------------------------------
+FrontEnd:
+
+ Input stream:
+	             input type = waveform
+	           input source = waveform file
+	          input filelist = supplied_test_set
+	          sampling freq. = 16000 Hz required
+	         threaded A/D-in = supported, off
+	   zero frames stripping = on
+	         silence cutting = off
+	    long-term DC removal = off
+	      reject short input = off
+
+----------------------- System Information end -----------------------
+
+------
+### read waveform input
+Error: adin_sndfile: sample rate != 16000, it's 44100 Hz data
+Error: adin_sndfile: invalid format: "../training/dataset/test/1_013.wav"
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 44100 Hz, 1 channels
+Error: adin_sndfile: sample rate != 16000, it's 44100 Hz data
+Error: adin_sndfile: invalid format: "../training/dataset/test/4_057.wav"
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 44100 Hz, 1 channels
+Error: adin_sndfile: sample rate != 16000, it's 44100 Hz data
+Error: adin_sndfile: invalid format: "../training/dataset/test/5_168.wav"
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 44100 Hz, 1 channels
+Error: adin_sndfile: sample rate != 16000, it's 44100 Hz data
+Error: adin_sndfile: invalid format: "../training/dataset/test/5_213.wav"
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 44100 Hz, 1 channels
+Error: adin_sndfile: sample rate != 16000, it's 44100 Hz data
+Error: adin_sndfile: invalid format: "../training/dataset/test/5_251.wav"
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 44100 Hz, 1 channels
+Error: adin_sndfile: sample rate != 16000, it's 44100 Hz data
+Error: adin_sndfile: invalid format: "../training/dataset/test/7_089.wav"
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 44100 Hz, 1 channels
+Stat: adin_sndfile: input speechfile: ../training/dataset/test/11_001.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+Warning: strip: sample 1473-1491 has zero value, stripped
+Warning: strip: sample 10167-10187 has zero value, stripped
+Warning: strip: sample 79294-79312 has zero value, stripped
+Warning: strip: sample 80371-80387 has zero value, stripped
+Warning: strip: sample 83245-83261 has zero value, stripped
+Warning: strip: sample 85220-85235 has zero value, stripped
+Warning: strip: sample 89670-89690 has zero value, stripped
+Warning: strip: sample 90606-90621 has zero value, stripped
+STAT: 96574 samples (6.04 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> h.p. khc lte jatsingh kata gegana nantes tanah <unk> t.h </s>
+pass1_best_wordseq: <s> h.p. khc lte jatsingh kata gegana nantes tanah <unk> t.h </s>
+pass1_best_phonemeseq: sil | h p | kh c | l t @ | j a t s i ng | k a t a | g @ g a n a | n a n t @ s | t a n a h | sil | t h | sil
+pass1_best_score: -21805.384766
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 6697 generated, 2400 pushed, 290 nodes popped in 602
+sentence1: <s> h.p. khc lte jatsingh kata gegana nantes tanah <euh> t.h </s>
+wseq1: <s> h.p. khc lte jatsingh kata gegana nantes tanah <euh> t.h </s>
+phseq1: sil | h p | kh c | l t @ | j a t s i ng | k a t a | g @ g a n a | n a n t @ s | t a n a h | sil | t h | sil
+cmscore1: 0.341 0.180 0.588 0.252 0.396 0.116 0.398 0.768 0.243 0.149 0.487 1.000
+score1: -21854.410156
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/test/11_002.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+Warning: strip: sample 62760-62779 has zero value, stripped
+Warning: strip: sample 63416-63433 has zero value, stripped
+Warning: strip: sample 66929-66944 has zero value, stripped
+Warning: strip: sample 68119-68136 has zero value, stripped
+Warning: strip: sample 69586-69603 has zero value, stripped
+STAT: 70350 samples (4.40 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> heh kangen perjalannya dan force rempah t.h </s>
+pass1_best_wordseq: <s> heh kangen perjalannya dan force rempah t.h </s>
+pass1_best_phonemeseq: sil | h e h | k a ng @ n | p @ r j a l a n ny a | d a n | f o r c @ | r @ m p a h | t h | sil
+pass1_best_score: -15964.347656
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3416 generated, 1512 pushed, 163 nodes popped in 438
+sentence1: <s> heh kangen perjalannya mencarter lemah t.h </s>
+wseq1: <s> heh kangen perjalannya mencarter lemah t.h </s>
+phseq1: sil | h e h | k a ng @ n | p @ r j a l a n ny a | m @ n c a r t @ r | l @ m a h | t h | sil
+cmscore1: 0.405 0.327 0.292 0.176 0.100 0.361 0.578 1.000
+score1: -16000.705078
+
+
+------
+### read waveform input
+Error: adin_sndfile: sample rate != 16000, it's 44100 Hz data
+Error: adin_sndfile: invalid format: "../training/dataset/test/11_003.wav"
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 44100 Hz, 1 channels
+Stat: adin_sndfile: input speechfile: ../training/dataset/test/11_007.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+Warning: strip: sample 2891-2909 has zero value, stripped
+Warning: strip: sample 5086-5101 has zero value, stripped
+STAT: 95296 samples (5.96 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> hehe di nyambung sahnya hamzah adanya negeri deh t.h </s>
+pass1_best_wordseq: <s> hehe di nyambung sahnya hamzah adanya negeri deh t.h </s>
+pass1_best_phonemeseq: sil | h e h e | d e i | ny a m b u ng | s a h ny a | h a m z a h | a d a ny a | n @ g @ r i | d e h | t h | sil
+pass1_best_score: -20834.337891
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4684 generated, 2170 pushed, 230 nodes popped in 594
+sentence1: <s> he-he di nyambung sahnya hamzah adanya negeri deh t.h </s>
+wseq1: <s> he-he di nyambung sahnya hamzah adanya negeri deh t.h </s>
+phseq1: sil | h e h e | d e i | ny a m b u ng | s a h ny a | h a m z a h | a d a ny a | n @ g @ r i | d e h | t h | sil
+cmscore1: 0.351 0.170 0.130 0.187 0.425 0.145 0.124 0.161 0.478 0.637 1.000
+score1: -20878.142578
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/test/11_010.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+Warning: strip: sample 77472-77490 has zero value, stripped
+Warning: strip: sample 79047-79063 has zero value, stripped
+Warning: strip: sample 93453-93471 has zero value, stripped
+Warning: strip: sample 94996-95011 has zero value, stripped
+Warning: strip: sample 100245-100267 has zero value, stripped
+Warning: strip: sample 103211-103227 has zero value, stripped
+Warning: strip: sample 103540-103558 has zero value, stripped
+STAT: 104350 samples (6.52 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> hpds itu jerigen nah wahanatama nya kurdi kemarin hhhh </s>
+pass1_best_wordseq: <s> hpds itu jerigen nah wahanatama nya kurdi kemarin hhhh </s>
+pass1_best_phonemeseq: sil | h p d s | i t u | j e r i g e n | n a h | w a h a n a t a m a | ny a | k u r d i | k @ m a r i n | h h h h | sil
+pass1_best_score: -24004.308594
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4938 generated, 2047 pushed, 248 nodes popped in 650
+sentence1: <s> hpds itu jerigen nah wahanatama nya kurdi kemarin hhhh </s>
+wseq1: <s> hpds itu jerigen nah wahanatama nya kurdi kemarin hhhh </s>
+phseq1: sil | h p d s | i t u | j e r i g e n | n a h | w a h a n a t a m a | ny a | k u r d i | k @ m a r i n | h h h h | sil
+cmscore1: 1.000 0.731 0.162 0.214 0.267 0.405 0.213 0.116 0.253 0.399 1.000
+score1: -24048.873047
+
+
+------
+### read waveform input

@@ -15,14 +15,14 @@
 -d julius.gram
 -v indonesian-sanitized.lex      # pronunciation dictionary
 -h hmmdefs-trifon    # acoustic HMM (ascii or Julius binary)
--tmix 3
+#-tmix 3
 -hlist tiedlist     # HMMList to map logical phone to physical
 -smpFreq 16000	    # sampling rate (Hz)
 -spmodel "sp"		    # name of a short-pause silence model
 -multipath          # force enable MULTI-PATH model handling
 -gprune safe        # Gaussian pruning method
--iwcd1 max          # Inter-word triphone approximation method
--iwsppenalty -70.0	# transition penalty for the appended sp models
+#-iwcd1 max          # Inter-word triphone approximation method
+#-iwsppenalty -70.0	# transition penalty for the appended sp models
 #-iwsp			          # append a skippable sp model at all word ends
 -penalty1 5.0		    # word insertion penalty for grammar (pass1)
 -penalty2 20.0	    # word insertion penalty for grammar (pass2)

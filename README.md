@@ -236,3 +236,28 @@
         
         HHEd -A -D -T 1 -H hmm18/macros -H hmm18/hmmdefs -M hmm19 wordlistmktri.hed wordlist/monophones1 
 
+## Web
+
+  Make sure your computer have [node js](http://nodejs.org/en/download)
+
+### Run the program 
+  1. Make sure you are in web folder using `cd web`
+  2. Open node.js terminal (in Windows) or normal terminal (in Linux)
+  3. Type `node.js`
+  4. Open your browser and type `localhost:8800`
+  5. Make sure you allow microphone in the browser
+  6. Click button `Start Recording` for record and `Stop Recording` for stop and save the file in *web/demo.wav*
+  7. Play the sound demo.wav with your application
+
+### Dependency
+  1. `npm install binaryjs`
+  2. `npm install express`
+  3. `npm install fs`
+  4. `npm install jade`
+  5. `npm install wav`
+  6. `npm install recordrtc`
+  7. `npm install child_process`
+
+### cobaexec.js
+run using `node cobaexec.js`
+for changing the output, just take the `stdout` variable inside the function
