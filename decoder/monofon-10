@@ -1,0 +1,451 @@
+STAT: include config: decoder-conf-monofon
+STAT: jconf successfully finalized
+STAT: *** loading AM00 _default
+Stat: init_phmm: Reading in HMM definition
+Stat: rdhmmdef: ascii format HMM definition
+Stat: rdhmmdef: limit check passed
+Stat: check_hmm_restriction: an HMM with several arcs from initial state found: "sp"
+Stat: rdhmmdef: this HMM requires multipath handling at decoding
+Stat: init_phmm: defined HMMs:    34
+Stat: init_phmm: logical names:    34
+Stat: init_phmm: base phones:    34 used in logical
+Stat: init_phmm: finished reading HMM definitions
+STAT: *** AM00 _default loaded
+STAT: *** loading LM00 _default
+Stat: init_voca: read 182669 words
+Stat: init_ngram: reading in binary n-gram from julius.gram
+Stat: ngram_read_bin_v5: this is forward 3-gram file
+stat: ngram_read_bin_v5: reading 1-gram
+stat: ngram_read_bin_v5: reading 2-gram
+stat: ngram_read_bin_v5: reading 3-gram
+Stat: ngram_read_bin: making entry name index
+Stat: init_ngram: found unknown word entry "<unk>"
+Stat: init_ngram: finished reading n-gram
+Stat: init_ngram: mapping dictonary words to n-gram entries
+Warning: ngram_lookup: "!sil" not exist in N-gram, treat as unknown
+Stat: init_ngram: finished word-to-ngram mapping
+Warning: BOS word "<s>" has unigram prob of "-99"
+Warning: assigining value of EOS word "</s>": -1.591803
+STAT: *** LM00 _default loaded
+STAT: ------
+STAT: All models are ready, go for final fusion
+STAT: [1] create MFCC extraction instance(s)
+STAT: *** create MFCC calculation modules from AM
+STAT: AM 0 _default: create a new module MFCC01
+STAT: 1 MFCC modules created
+STAT: [2] create recognition processing instance(s) with AM and LM
+STAT: composing recognizer instance SR00 _default (AM00 _default, LM00 _default)
+STAT: Building HMM lexicon tree
+STAT: lexicon size: 1671380 nodes
+STAT: coordination check passed
+STAT: make successor lists for unigram factoring
+STAT: done
+STAT:  1-gram factoring values has been pre-computed
+STAT: SR00 _default composed
+STAT: [3] initialize for acoustic HMM calculation
+Stat: outprob_init: state-level mixture PDFs, use calc_mix()
+Stat: addlog: generating addlog table (size = 1953 kB)
+Stat: addlog: addlog table generated
+STAT: [4] prepare MFCC storage(s)
+STAT: All init successfully done
+
+STAT: ###### initialize input device
+----------------------- System Information begin ---------------------
+JuliusLib rev.4.2.1 (fast)
+
+Engine specification:
+ -  Base setup   : fast
+ -  Supported LM : DFA, N-gram, Word
+ -  Extension    : WordsInt LibSndFile
+ -  Compiled by  : gcc -g -O2
+
+------------------------------------------------------------
+Configuration of Modules
+
+ Number of defined modules: AM=1, LM=1, SR=1
+
+ Acoustic Model (with input parameter spec.):
+ - AM00 "_default"
+	hmmfilename=hmmdefs-monofon
+
+ Language Model:
+ - LM00 "_default"
+	vocabulary filename=indonesian.lex
+	n-gram  filename=julius.gram (binary format)
+
+ Recognizer:
+ - SR00 "_default" (AM00, LM00)
+
+------------------------------------------------------------
+Speech Analysis Module(s)
+
+[MFCC01]  for [AM00 _default]
+
+ Acoustic analysis condition:
+	       parameter = MFCC_0_D_A (39 dim. from 12 cepstrum + c0)
+	sample frequency = 16000 Hz
+	   sample period =  625  (1 = 100ns)
+	     window size =  400 samples (25.0 ms)
+	     frame shift =  160 samples (10.0 ms)
+	    pre-emphasis = 0.97
+	    # filterbank = 24
+	   cepst. lifter = 22
+	      raw energy = False
+	energy normalize = False
+	    delta window = 2 frames (20.0 ms) around
+	      acc window = 2 frames (20.0 ms) around
+	     hi freq cut = OFF
+	     lo freq cut = OFF
+	 zero mean frame = OFF
+	       use power = OFF
+	             CVN = OFF
+	            VTLN = OFF
+    spectral subtraction = off
+  cepstral normalization = no
+	 base setup from = Julius defaults
+
+------------------------------------------------------------
+Acoustic Model(s)
+
+[AM00 "_default"]
+
+ HMM Info:
+    34 models, 99 states, 99 mpdfs, 99 Gaussians are defined
+	      model type = context dependency handling OFF
+      training parameter = MFCC_D_A_0
+	   vector length = 39
+	number of stream = 1
+	     stream info = [0-38]
+	cov. matrix type = DIAGC
+	   duration type = NULLD
+	max mixture size = 1 Gaussians
+     max length of model = 5 states
+     logical base phones = 34
+       model skip trans. = exist, require multi-path handling
+      skippable models = sp (1 model(s))
+
+ AM Parameters:
+        Gaussian pruning = none (full computation)  (-gprune)
+    short pause HMM name = "sp" specified, "sp" applied (physical)  (-sp)
+  cross-word CD on pass1 = handle by approx. (use 3-best of same LC)
+   sp transition penalty = -1.0
+
+------------------------------------------------------------
+Language Model(s)
+
+[LM00 "_default"] type=n-gram
+
+ N-gram info:
+	            spec = 3-gram, forward (left-to-right)
+	        OOV word = <unk>(id=32)
+	        OOV size = 2 words in dict
+	    wordset size = 179235
+	  1-gram entries =     179235  (  1.4 MB)
+	  2-gram entries =    2026095  ( 23.8 MB) (15% are valid contexts)
+	  3-gram entries =     958584  (  9.4 MB)
+	           pass1 = 2-gram in the forward n-gram
+
+ Vocabulary Info:
+        vocabulary size  = 182669 words, 1472868 models
+        average word len = 8.1 models, 24.2 states
+       maximum state num = 276 nodes per word
+       transparent words = not exist
+       words under class = not exist
+
+ Parameters:
+	(-silhead)head sil word = 182667: "<s> @0.000000 [<s>] sil(sil)"
+	(-siltail)tail sil word = 182668: "</s> @0.000000 [</s>] sil(sil)"
+
+------------------------------------------------------------
+Recognizer(s)
+
+[SR00 "_default"]  AM00 "_default"  +  LM00 "_default"
+
+ Lexicon tree:
+	 total node num = 1671380
+	  root node num =    183
+	(148 hi-freq. words are separated from tree lexicon)
+	  leaf node num = 182669
+	 fact. node num = 182669
+
+ Inter-word N-gram cache: 
+	root node to be cached = 150 / 183 (isolated only)
+	word ends to be cached = 179235 (all)
+	  max. allocation size = 107MB
+	(-lmp)  pass1 LM weight = 5.0  ins. penalty = -1.0
+	(-lmp2) pass2 LM weight = 6.0  ins. penalty = +0.0
+	(-transp)trans. penalty = +0.0 per word
+	(-cmalpha)CM alpha coef = 0.050000
+
+ Search parameters: 
+	    multi-path handling = yes, multi-path mode enabled
+	(-b) trellis beam width = 400 (-1 or not specified - guessed)
+	(-bs)score pruning thres= disabled
+	(-n)search candidate num= 1
+	(-s)  search stack size = 500
+	(-m)    search overflow = after 2000 hypothesis poped
+	        2nd pass method = searching sentence, generating N-best
+	(-b2)  pass2 beam width = 30
+	(-lookuprange)lookup range= 5  (tm-5 <= t <tm+5)
+	(-sb)2nd scan beamthres = 80.0 (in logscore)
+	(-n)        search till = 1 candidates found
+	(-output)    and output = 1 candidates out of above
+	 factoring score: 1-gram prob. (statically assigned beforehand)
+	short pause segmentation = off
+	fall back on search fail = off, returns search failure
+
+------------------------------------------------------------
+Decoding algorithm:
+
+	1st pass input processing = buffered, batch
+	1st pass method = 1-best approx. generating indexed trellis
+	output word confidence measure based on search-time scores
+
+------------------------------------------------------------
+FrontEnd:
+
+ Input stream:
+	             input type = waveform
+	           input source = waveform file
+	          input filelist = test_sanitize.scp
+	          sampling freq. = 16000 Hz required
+	         threaded A/D-in = supported, off
+	   zero frames stripping = on
+	         silence cutting = off
+	    long-term DC removal = off
+	      reject short input = off
+
+----------------------- System Information end -----------------------
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A001.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 142392 samples (8.90 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pergram mamahit <euh> cenderung memasukan orangnya <euh> the menggusur kader partai line </s>
+pass1_best_wordseq: <s> pergram mamahit <euh> cenderung memasukan orangnya <euh> the menggusur kader partai line </s>
+pass1_best_phonemeseq: sil | p @ r g r a m | m a m a h i t | sil | c @ n d @ r u ng | m @ m a s u k a n | o r a ng ny a | sil | d @ | m @ ng g u s u r | k a d @ r | p a r t ai | l ai n | sil
+pass1_best_score: -27931.675781
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3656 generated, 1547 pushed, 221 nodes popped in 888
+sentence1: <s> pembeber mamahit <euh> cenderung memasukan orangnya <unk> the menggusur kader golkar line </s>
+wseq1: <s> pembeber mamahit <euh> cenderung memasukan orangnya <unk> the menggusur kader golkar line </s>
+phseq1: sil | p @ m b @ b @ r | m a m a h i t | sil | c @ n d @ r u ng | m @ m a s u k a n | o r a ng ny a | sil | d @ | m @ ng g u s u r | k a d @ r | p a r t ai | l ai n | sil
+cmscore1: 0.149 0.099 0.180 0.148 0.375 0.239 0.541 0.305 0.168 0.563 0.899 0.218 0.406 1.000
+score1: -27969.880859
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A002.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 85001 samples (5.31 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> khattin itu kan pastinya tigers tujuh </s>
+pass1_best_wordseq: <s> khattin itu kan pastinya tigers tujuh </s>
+pass1_best_phonemeseq: sil | kh a t t i n | i t u | k a n | p a s t i ny a | t i g @ r s | t u j u h | sil
+pass1_best_score: -16711.800781
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2066 generated, 1119 pushed, 130 nodes popped in 529
+sentence1: <s> thaksin itu kan pastinya tigers tujuh </s>
+wseq1: <s> thaksin itu kan pastinya tigers tujuh </s>
+phseq1: sil | t a k s i n | i t u | k a n | p a s t i ny a | t i g @ r s | t u j u h | sil
+cmscore1: 0.214 0.173 0.601 0.396 0.274 0.376 0.527 1.000
+score1: -16739.966797
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A003.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 130199 samples (8.14 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> tercatat yang dimulai <euh> tepat setelah syukur itu <euh> jika polda turis syukur </s>
+pass1_best_wordseq: <s> tercatat yang dimulai <euh> tepat setelah syukur itu <euh> jika polda turis syukur </s>
+pass1_best_phonemeseq: sil | t @ r c a t a t | y a ng | d i m u l ai | sil | t @ p a t | s @ t @ l a h | sy u k u r | i t u | sil | j i k a | p o l d a | t u r i s | sy u k u r | sil
+pass1_best_score: -26155.683594
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 5268 generated, 2406 pushed, 294 nodes popped in 812
+sentence1: <s> tercatat yang dimulai <euh> tepat setelah syukur itu <unk> juga telah kabur syukur </s>
+wseq1: <s> tercatat yang dimulai <euh> tepat setelah syukur itu <unk> juga telah kabur syukur </s>
+phseq1: sil | t @ r c a t a t | y a ng | d i m u l ai | sil | t @ p a t | s @ t @ l a h | sy u k u r | i t u | sil | j u g a | t @ l a h | k a b u r | sy u k u r | sil
+cmscore1: 0.214 0.131 0.412 0.354 0.139 0.259 0.635 0.301 0.671 0.149 0.248 0.039 0.232 0.413 1.000
+score1: -26157.705078
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A004.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 117028 samples (7.31 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pashtun yang duduk di depan <euh> penurunan pisauku pedadah batangan </s>
+pass1_best_wordseq: <s> pashtun yang duduk di depan <euh> penurunan pisauku pedadah batangan </s>
+pass1_best_phonemeseq: sil | p a s t u n | y a ng | d u d u k | d i | d @ p a n | sil | p @ n u r u n a n | p i s au k u | p @ d a d a h | b a t a ng a n | sil
+pass1_best_score: -23713.839844
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3268 generated, 1790 pushed, 194 nodes popped in 729
+sentence1: <s> pashtun yang duduk di depan !sil penurunan pisauku pedadah mekkah </s>
+wseq1: <s> pashtun yang duduk di depan !sil penurunan pisauku pedadah mekkah </s>
+phseq1: sil | p a s t u n | y a ng | d u d u k | d i | d @ p a n | sil | p @ n u r u n a n | p i s au k u | p @ d a d a h | m @ k k a h | sil
+cmscore1: 0.161 0.244 0.409 0.710 0.857 0.562 0.122 0.168 0.338 0.393 0.091 1.000
+score1: -23744.982422
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A005.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 137606 samples (8.60 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pada informasi !sil bahwa kadis syukur <euh> pemberi senjata di tesergap cipacing </s>
+pass1_best_wordseq: <s> pada informasi !sil bahwa kadis syukur <euh> pemberi senjata di tesergap cipacing </s>
+pass1_best_phonemeseq: sil | p a d a | i n f o r m a s i | sil | b a h w a | k a d i s | sy u k u r | sil | p @ m b @ r i | s @ n j a t a | d e i | t @ s @ r g a p | c i p a c i ng | sil
+pass1_best_score: -27618.814453
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3587 generated, 1789 pushed, 173 nodes popped in 858
+sentence1: <s> pada informasi <euh> bahwa kadis syukur <euh> pemberi senjata di tesergap cipacing </s>
+wseq1: <s> pada informasi <euh> bahwa kadis syukur <euh> pemberi senjata di tesergap cipacing </s>
+phseq1: sil | p a d a | i n f o r m a s i | sil | b a h w a | k a d i s | sy u k u r | sil | p @ m b @ r i | s @ n j a t a | d e i | t @ s @ r g a p | c i p a c i ng | sil
+cmscore1: 0.233 0.080 0.509 0.137 0.591 0.161 0.314 0.149 0.505 0.763 0.275 0.291 0.247 1.000
+score1: -27637.121094
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A006.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 130326 samples (8.15 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pada informasi dari ucok !sil bahwa kanker jaksa gun !sil diboikot oleh stafnya </s>
+pass1_best_wordseq: <s> pada informasi dari ucok !sil bahwa kanker jaksa gun !sil diboikot oleh stafnya </s>
+pass1_best_phonemeseq: sil | p a d a | i n f o r m a s i | d a r i | u c o k | sil | b a h w a | k a ng k @ r | j a k s a | g u n | sil | d i b oi k o t | o l e h | s t a f ny a | sil
+pass1_best_score: -26614.640625
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 5123 generated, 1828 pushed, 253 nodes popped in 813
+sentence1: <s> pada informasi dari ucok !sil bahwa kanker jaksa agung g <unk> diboikot oleh stafnya </s>
+wseq1: <s> pada informasi dari ucok !sil bahwa kanker jaksa agung g <unk> diboikot oleh stafnya </s>
+phseq1: sil | p a d a | i n f o r m a s i | d a r i | u c o k | sil | b a h w a | k a ng k @ r | j a k s a | a g u ng | g | sil | d i b oi k o t | o l e h | s t a f ny a | sil
+cmscore1: 0.232 0.112 0.956 0.208 0.201 0.128 0.698 0.168 0.483 0.213 0.164 0.091 0.544 0.494 0.608 1.000
+score1: -26641.316406
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A007.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 151065 samples (9.44 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pada keanehan petendinya ya pemegang yan <unk> pidie raden !sil bnj muarikh sebanyak meniduri mengaduh </s>
+pass1_best_wordseq: <s> pada keanehan petendinya ya pemegang yan <unk> pidie raden !sil bnj muarikh sebanyak meniduri mengaduh </s>
+pass1_best_phonemeseq: sil | p a d a | k @ a n e h a n | p @ t e n d i ny a | y a | p @ m @ g a ng | y a n | sil | p i d i | r a d e n | sil | b @ @ n j @ | m u a r i kh | s @ b a ny a k | m @ n i d u r i | m @ ng a d u h | sil
+pass1_best_score: -30681.384766
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 10736 generated, 3935 pushed, 454 nodes popped in 942
+sentence1: <s> pada keanehan petendinya ya pemegang yan !sil pidie raden !sil bnj muarikh sebanyak meniduri mengatur sh </s>
+wseq1: <s> pada keanehan petendinya ya pemegang yan !sil pidie raden !sil bnj muarikh sebanyak meniduri mengatur sh </s>
+phseq1: sil | p a d a | k @ a n e h a n | p @ t e n d i ny a | y a | p @ m @ g a ng | y a n | sil | p i d i | r a d e n | sil | b @ @ n j @ | m u a r i kh | s @ b a ny a k | m @ n i d u r i | m @ ng a t u r | s h | sil
+cmscore1: 0.244 0.281 0.916 0.103 0.145 0.167 0.300 0.123 0.261 0.100 0.068 0.170 0.360 0.554 0.624 0.263 0.349 1.000
+score1: -30747.644531
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A008.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 126745 samples (7.92 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pada keterwakilan <euh> di hati tadi solichin !sil tuntut maaf makan jepang pun </s>
+pass1_best_wordseq: <s> pada keterwakilan <euh> di hati tadi solichin !sil tuntut maaf makan jepang pun </s>
+pass1_best_phonemeseq: sil | p a d a | k @ t @ r w a k i l a n | sil | d i | h a t i | t a d i | s o l i kh i n | sil | t u n t u t | m a a f | m a k a n | j @ p a ng | p u n | sil
+pass1_best_score: -24971.921875
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 8639 generated, 3018 pushed, 364 nodes popped in 790
+sentence1: <s> pada keterwakilan <euh> di hati tadi solichin !sil tuntut mas makan jepang pun </s>
+wseq1: <s> pada keterwakilan <euh> di hati tadi solichin !sil tuntut mas makan jepang pun </s>
+phseq1: sil | p a d a | k @ t @ r w a k i l a n | sil | d i | h a t i | t a d i | s o l i kh i n | sil | t u n t u t | m a s | m a k a n | j @ p a ng | p u n | sil
+cmscore1: 0.232 0.244 0.486 0.138 0.661 0.207 0.190 0.258 0.113 0.189 0.346 0.194 0.149 0.229 1.000
+score1: -25012.921875
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A009.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 106734 samples (6.67 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pada masa kata dimana bi bachtiar !sil tanya haji syarif </s>
+pass1_best_wordseq: <s> pada masa kata dimana bi bachtiar !sil tanya haji syarif </s>
+pass1_best_phonemeseq: sil | p a d a | m a s a | k a t a | d i m a n a | b @ i | b a h t i y a r | sil | t a ny a | h a j i | sy a r i f | sil
+pass1_best_score: -21010.015625
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 6427 generated, 2331 pushed, 273 nodes popped in 665
+sentence1: <s> pada masalah papar dimana bi bachtiar <unk> tanya haji syarif </s>
+wseq1: <s> pada masalah papar dimana bi bachtiar <unk> tanya haji syarif </s>
+phseq1: sil | p a d a | m a s a l a h | p a p a r | d i m a n a | b @ i | b a h t i y a r | sil | t a ny a | h a j i | sy a r i f | sil
+cmscore1: 0.232 0.580 0.155 0.071 0.287 0.096 0.434 0.105 0.532 0.312 0.328 1.000
+score1: -21047.250000
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A010.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 122771 samples (7.67 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pada nomer telepon ben jendela nn bidang pemasaran <euh> pt tidak omzet </s>
+pass1_best_wordseq: <s> pada nomer telepon ben jendela nn bidang pemasaran <euh> pt tidak omzet </s>
+pass1_best_phonemeseq: sil | p a d a | n o m @ r | t e l e p o n | b @ n | j @ n d @ l a | e n e n | b i d a ng | p @ m a s a r a n | sil | p e | t i d a k | o m s e t | sil
+pass1_best_score: -24642.818359
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4611 generated, 2377 pushed, 234 nodes popped in 765
+sentence1: <s> pada nomor telepon ben jendela nn bidang pemasaran <euh> pt tidak omzet </s>
+wseq1: <s> pada nomor telepon ben jendela nn bidang pemasaran <euh> pt tidak omzet </s>
+phseq1: sil | p a d a | n o m o r | t e l e p o n | b @ n | j @ n d @ l a | e n e n | b i d a ng | p @ m a s a r a n | sil | p e | t i d a k | o m s e t | sil
+cmscore1: 0.329 0.548 0.432 0.261 0.139 0.195 0.301 0.679 0.159 0.144 0.100 0.273 0.160 1.000
+score1: -24682.476562
+
+
+------
+### read waveform input

@@ -1,0 +1,3628 @@
+STAT: include config: decoder-conf-monofon
+WARNING: m_chkparam: "-penalty1" only for grammar, ignored
+WARNING: m_chkparam: "-penalty2" only for grammar, ignored
+STAT: jconf successfully finalized
+STAT: *** loading AM00 _default
+Stat: init_phmm: Reading in HMM definition
+Stat: rdhmmdef: ascii format HMM definition
+Stat: rdhmmdef: limit check passed
+Stat: check_hmm_restriction: an HMM with several arcs from initial state found: "sp"
+Stat: rdhmmdef: this HMM requires multipath handling at decoding
+Stat: init_phmm: defined HMMs:    34
+Stat: init_phmm: logical names:    34
+Stat: init_phmm: base phones:    34 used in logical
+Stat: init_phmm: finished reading HMM definitions
+STAT: m_fusion: force multipath HMM handling by user request
+STAT: *** AM00 _default loaded
+STAT: *** loading LM00 _default
+Stat: init_voca: read 182669 words
+Stat: init_ngram: reading in binary n-gram from julius.gram
+Stat: ngram_read_bin_v5: this is forward 3-gram file
+stat: ngram_read_bin_v5: reading 1-gram
+stat: ngram_read_bin_v5: reading 2-gram
+stat: ngram_read_bin_v5: reading 3-gram
+Stat: ngram_read_bin: making entry name index
+Stat: init_ngram: found unknown word entry "<unk>"
+Stat: init_ngram: finished reading n-gram
+Stat: init_ngram: mapping dictonary words to n-gram entries
+Warning: ngram_lookup: "!sil" not exist in N-gram, treat as unknown
+Stat: init_ngram: finished word-to-ngram mapping
+Warning: BOS word "<s>" has unigram prob of "-99"
+Warning: assigining value of EOS word "</s>": -1.591803
+STAT: *** LM00 _default loaded
+STAT: ------
+STAT: All models are ready, go for final fusion
+STAT: [1] create MFCC extraction instance(s)
+STAT: *** create MFCC calculation modules from AM
+STAT: AM 0 _default: create a new module MFCC01
+STAT: 1 MFCC modules created
+STAT: [2] create recognition processing instance(s) with AM and LM
+STAT: composing recognizer instance SR00 _default (AM00 _default, LM00 _default)
+STAT: Building HMM lexicon tree
+STAT: lexicon size: 1848140 nodes
+STAT: coordination check passed
+STAT: make successor lists for unigram factoring
+STAT: done
+STAT:  1-gram factoring values has been pre-computed
+STAT: SR00 _default composed
+STAT: [3] initialize for acoustic HMM calculation
+Stat: outprob_init: state-level mixture PDFs, use calc_mix()
+Stat: addlog: generating addlog table (size = 1953 kB)
+Stat: addlog: addlog table generated
+STAT: [4] prepare MFCC storage(s)
+STAT: All init successfully done
+
+STAT: ###### initialize input device
+----------------------- System Information begin ---------------------
+JuliusLib rev.4.2.1 (fast)
+
+Engine specification:
+ -  Base setup   : fast
+ -  Supported LM : DFA, N-gram, Word
+ -  Extension    : WordsInt LibSndFile
+ -  Compiled by  : gcc -g -O2
+
+------------------------------------------------------------
+Configuration of Modules
+
+ Number of defined modules: AM=1, LM=1, SR=1
+
+ Acoustic Model (with input parameter spec.):
+ - AM00 "_default"
+	hmmfilename=hmmdefs-monofon
+
+ Language Model:
+ - LM00 "_default"
+	vocabulary filename=indonesian.lex
+	n-gram  filename=julius.gram (binary format)
+
+ Recognizer:
+ - SR00 "_default" (AM00, LM00)
+
+------------------------------------------------------------
+Speech Analysis Module(s)
+
+[MFCC01]  for [AM00 _default]
+
+ Acoustic analysis condition:
+	       parameter = MFCC_0_D_A (39 dim. from 12 cepstrum + c0)
+	sample frequency = 16000 Hz
+	   sample period =  625  (1 = 100ns)
+	     window size =  400 samples (25.0 ms)
+	     frame shift =  160 samples (10.0 ms)
+	    pre-emphasis = 0.97
+	    # filterbank = 24
+	   cepst. lifter = 22
+	      raw energy = False
+	energy normalize = False
+	    delta window = 2 frames (20.0 ms) around
+	      acc window = 2 frames (20.0 ms) around
+	     hi freq cut = OFF
+	     lo freq cut = OFF
+	 zero mean frame = OFF
+	       use power = OFF
+	             CVN = OFF
+	            VTLN = OFF
+    spectral subtraction = off
+  cepstral normalization = no
+	 base setup from = Julius defaults
+
+------------------------------------------------------------
+Acoustic Model(s)
+
+[AM00 "_default"]
+
+ HMM Info:
+    34 models, 99 states, 99 mpdfs, 99 Gaussians are defined
+	      model type = context dependency handling OFF
+      training parameter = MFCC_D_A_0
+	   vector length = 39
+	number of stream = 1
+	     stream info = [0-38]
+	cov. matrix type = DIAGC
+	   duration type = NULLD
+	max mixture size = 1 Gaussians
+     max length of model = 5 states
+     logical base phones = 34
+       model skip trans. = exist, require multi-path handling
+      skippable models = sp (1 model(s))
+
+ AM Parameters:
+        Gaussian pruning = none (full computation)  (-gprune)
+    short pause HMM name = "sp" specified, "sp" applied (physical)  (-sp)
+  cross-word CD on pass1 = handle by approx. (use 3-best of same LC)
+   sp transition penalty = -70.0
+
+------------------------------------------------------------
+Language Model(s)
+
+[LM00 "_default"] type=n-gram
+
+ N-gram info:
+	            spec = 3-gram, forward (left-to-right)
+	        OOV word = <unk>(id=32)
+	        OOV size = 2 words in dict
+	    wordset size = 179235
+	  1-gram entries =     179235  (  1.4 MB)
+	  2-gram entries =    2026095  ( 23.8 MB) (15% are valid contexts)
+	  3-gram entries =     958584  (  9.4 MB)
+	           pass1 = 2-gram in the forward n-gram
+
+ Vocabulary Info:
+        vocabulary size  = 182669 words, 1472868 models
+        average word len = 8.1 models, 24.2 states
+       maximum state num = 276 nodes per word
+       transparent words = not exist
+       words under class = not exist
+
+ Parameters:
+	(-silhead)head sil word = 182667: "<s> @0.000000 [<s>] sil(sil)"
+	(-siltail)tail sil word = 182668: "</s> @0.000000 [</s>] sil(sil)"
+
+------------------------------------------------------------
+Recognizer(s)
+
+[SR00 "_default"]  AM00 "_default"  +  LM00 "_default"
+
+ Lexicon tree:
+	 total node num = 1848140
+	  root node num =    183
+	(148 hi-freq. words are separated from tree lexicon)
+	  leaf node num = 182669
+	 fact. node num = 182669
+
+ Inter-word N-gram cache: 
+	root node to be cached = 150 / 183 (isolated only)
+	word ends to be cached = 179235 (all)
+	  max. allocation size = 107MB
+	(-lmp)  pass1 LM weight = 5.0  ins. penalty = -1.0
+	(-lmp2) pass2 LM weight = 6.0  ins. penalty = +0.0
+	(-transp)trans. penalty = +0.0 per word
+	(-cmalpha)CM alpha coef = 0.050000
+
+	 inter-word short pause = on (append "sp" for each word tail)
+	  sp transition penalty = -70.0
+ Search parameters: 
+	    multi-path handling = yes, multi-path mode enabled
+	(-b) trellis beam width = 400 (-1 or not specified - guessed)
+	(-bs)score pruning thres= disabled
+	(-n)search candidate num= 1
+	(-s)  search stack size = 500
+	(-m)    search overflow = after 2000 hypothesis poped
+	        2nd pass method = searching sentence, generating N-best
+	(-b2)  pass2 beam width = 200
+	(-lookuprange)lookup range= 5  (tm-5 <= t <tm+5)
+	(-sb)2nd scan beamthres = 200.0 (in logscore)
+	(-n)        search till = 1 candidates found
+	(-output)    and output = 1 candidates out of above
+	 factoring score: 1-gram prob. (statically assigned beforehand)
+	short pause segmentation = off
+	fall back on search fail = off, returns search failure
+
+------------------------------------------------------------
+Decoding algorithm:
+
+	1st pass input processing = buffered, batch
+	1st pass method = 1-best approx. generating indexed trellis
+	output word confidence measure based on search-time scores
+
+------------------------------------------------------------
+FrontEnd:
+
+ Input stream:
+	             input type = waveform
+	           input source = waveform file
+	          input filelist = test_sanitize.scp
+	          sampling freq. = 16000 Hz required
+	         threaded A/D-in = supported, off
+	   zero frames stripping = on
+	         silence cutting = off
+	    long-term DC removal = off
+	      reject short input = off
+
+----------------------- System Information end -----------------------
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A001.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 142392 samples (8.90 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A002.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 85001 samples (5.31 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ktt cyndi tjuk antarpemerintah tuju </s>
+pass1_best_wordseq: <s> ktt cyndi tjuk antarpemerintah tuju </s>
+pass1_best_phonemeseq: sil | k a t | s i n d i | c u k | a n t a r p e m e r i n t a h | t u j u | sil
+pass1_best_score: -17009.962891
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 566 generated, 566 pushed, 69 nodes popped in 529
+sentence1: <s> thaksin ebook antarpemerintah tuju </s>
+wseq1: <s> thaksin ebook antarpemerintah tuju </s>
+phseq1: sil | t a k s i n | i b u k | a n t a r p e m e r i n t a h | t u j u | sil
+cmscore1: 0.229 0.555 0.421 0.925 1.000 1.000
+score1: -17319.261719
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A003.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 130199 samples (8.14 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pa.ca.ngan yenny murad tjepat stela henry aku </s>
+pass1_best_wordseq: <s> pa.ca.ngan yenny murad tjepat stela henry aku </s>
+pass1_best_phonemeseq: sil | p a c a ng a n | y e n i | m u r a d | c @ p a t | s t e l a | h e n r i | k u | sil
+pass1_best_score: -19222.294922
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1360 generated, 841 pushed, 288 nodes popped in 812
+sentence1: <s> kecamatan murad tjepat skor henry aku </s>
+wseq1: <s> kecamatan murad tjepat skor henry aku </s>
+phseq1: sil | k @ c a m a t a n | m u r a d | c @ p a t | s k o r | h e n r i | k u | sil
+cmscore1: 0.123 0.222 0.746 1.000 0.126 0.561 0.362 1.000
+score1: -27455.111328
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A004.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 117028 samples (7.31 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A005.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 137606 samples (8.60 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> paten for mas ichwan kadis sjoekoer <nafas> pembicaran denny tesergap tjepat m </s>
+pass1_best_wordseq: <s> paten for mas ichwan kadis sjoekoer <nafas> pembicaran denny tesergap tjepat m </s>
+pass1_best_phonemeseq: sil | p a t e n | f o r | m a s | i kh w a n | k a d i s | sy u k u r | sil | p @ m b i c a r a n | d e n i | t @ s @ r g a p | c @ p a t | e m | sil
+pass1_best_score: -28143.966797
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 11637 generated, 4094 pushed, 1523 nodes popped in 858
+sentence1: <s> paten for mas ichwan kadis sjukur pembicaran deny tesergap cita-cita </s>
+wseq1: <s> paten for mas ichwan kadis sjukur pembicaran deny tesergap cita-cita </s>
+phseq1: sil | p a t e n | f o r | m a s | i kh w a n | k a d i s | sy u k u r | p @ m b i c a r a n | d e n i | t @ s @ r g a p | c i t a c i t a | sil
+cmscore1: 0.169 0.541 0.544 0.592 1.000 0.536 0.057 0.429 0.159 0.839 0.069 1.000
+score1: -28728.972656
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A006.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 130326 samples (8.15 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A007.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 151065 samples (9.44 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A008.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 126745 samples (7.92 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pa.gar teman-teman <nafas> dijadikan-nya solikhin <nafas> pendhem afgan gani juta nur </s>
+pass1_best_wordseq: <s> pa.gar teman-teman <nafas> dijadikan-nya solikhin <nafas> pendhem afgan gani juta nur </s>
+pass1_best_phonemeseq: sil | p a g a r | t @ m a n t @ m a n | sil | d i j a d i k a n ny a | s o l i kh i n | sil | p @ n d @ m | a f g a n | g a n i | j u t a | n u r | sil
+pass1_best_score: -25315.101562
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 17311 generated, 4312 pushed, 1760 nodes popped in 790
+sentence1: <s> pajak teman-teman <nafas> dijadikan-nya solikhin <nafas> pendhem afgan gani juta nur </s>
+wseq1: <s> pajak teman-teman <nafas> dijadikan-nya solikhin <nafas> pendhem afgan gani juta nur </s>
+phseq1: sil | p a j a k | t @ m a n t @ m a n | sil | d i j a d i k a n ny a | s o l i kh i n | sil | p @ n d @ m | a f g a n | g a n i | j u t a | n u r | sil
+cmscore1: 0.166 0.281 0.808 0.102 0.926 0.404 0.113 0.991 0.338 0.233 0.625 0.353 1.000
+score1: -26126.105469
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A009.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 106734 samples (6.67 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A010.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 122771 samples (7.67 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> padan emarketer menjenengkan digenggamkan pt djarum serak </s>
+pass1_best_wordseq: <s> padan emarketer menjenengkan digenggamkan pt djarum serak </s>
+pass1_best_phonemeseq: sil | p a d a n | @ m a r k @ t @ r | m @ n j @ n @ ng k a n | d i g @ ng g a m k a n | p e t e | j a r u m | s e r a k | sil
+pass1_best_score: -25192.003906
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 10142 generated, 2948 pushed, 944 nodes popped in 765
+sentence1: <s> padan emarketer menggentarkan digenggamkan pt djarum sett </s>
+wseq1: <s> padan emarketer menggentarkan digenggamkan pt djarum sett </s>
+phseq1: sil | p a d a n | @ m a r k @ t @ r | m @ ng g @ n t a r k a n | d i g @ ng g a m k a n | p e t e | j a r u m | s e t | sil
+cmscore1: 0.135 0.386 0.581 0.078 0.196 0.778 0.280 0.159 1.000
+score1: -25602.533203
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A011.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 116081 samples (7.26 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A012.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 105837 samples (6.61 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pajak intern kom <nafas> singapure ad mana shiah ketut china </s>
+pass1_best_wordseq: <s> pajak intern kom <nafas> singapure ad mana shiah ketut china </s>
+pass1_best_phonemeseq: sil | p a j a k | i n t e r @ n | k o m | sil | s i ng a p u r | a d @ | m a n a | s i a h | k @ t u t | c i n a | sil
+pass1_best_score: -21253.238281
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 11076 generated, 3136 pushed, 1359 nodes popped in 659
+sentence1: <s> pajak intern kom <nafas> singapure ad mana shiah ketut china </s>
+wseq1: <s> pajak intern kom <nafas> singapure ad mana shiah ketut china </s>
+phseq1: sil | p a j a k | i n t e r @ n | k o m | sil | s i ng a p u r | a d @ | m a n a | s i a h | k @ t u t | c i n a | sil
+cmscore1: 0.143 0.350 0.963 0.564 0.113 0.778 0.682 0.896 0.710 0.736 0.471 1.000
+score1: -21976.796875
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A013.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 120779 samples (7.55 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> padahal helmy nehm tjiu </s>
+pass1_best_wordseq: <s> padahal helmy nehm tjiu </s>
+pass1_best_phonemeseq: sil | p a d a h a l | h e l m i | n e m | c i u | sil
+pass1_best_score: -12921.193359
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 65 generated, 65 pushed, 11 nodes popped in 753
+sentence1: <s> padahal helmy nehm tjiu </s>
+wseq1: <s> padahal helmy nehm tjiu </s>
+phseq1: sil | p a d a h a l | h e l m i | n e m | c i u | sil
+cmscore1: 0.371 0.367 1.000 0.389 0.233 1.000
+score1: -25500.234375
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A014.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 115509 samples (7.22 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A015.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 87654 samples (5.48 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A016.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 94928 samples (5.93 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A017.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 100917 samples (6.31 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> padu murni ketumbarnya dilatarbelakangi noordin djafar irak </s>
+pass1_best_wordseq: <s> padu murni ketumbarnya dilatarbelakangi noordin djafar irak </s>
+pass1_best_phonemeseq: sil | p a d u | m u r n i | k @ t u m b a r ny a | d i l a t a r b @ l a k a ng i | n u r d i n | j a f a r | i r a k | sil
+pass1_best_score: -20845.445312
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2653 generated, 1729 pushed, 600 nodes popped in 629
+sentence1: <s> padu murid kebenarannya dilatarbelakangi urin ja'far irak </s>
+wseq1: <s> padu murid kebenarannya dilatarbelakangi urin ja'far irak </s>
+phseq1: sil | p a d u | m u r i d | k @ b @ n a r a n ny a | d i l a t a r b @ l a k a ng i | u r i n | j a f a r | i r a k | sil
+cmscore1: 0.131 0.793 0.149 0.170 0.560 0.232 0.173 1.000 1.000
+score1: -21334.287109
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A018.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 94989 samples (5.94 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A019.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 108380 samples (6.77 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> performen jerry taha gandhi matori post ud seram antarbank a-star m.h </s>
+pass1_best_wordseq: <s> performen jerry taha gandhi matori post ud seram antarbank a-star m.h </s>
+pass1_best_phonemeseq: sil | p @ r f o r m @ n | j e r i | t a h a | g a n d i | m a t o r i | p o s | u d | s @ r a m | a n t a r b a ng | a s t a r | m h | sil
+pass1_best_score: -22046.511719
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 6936 generated, 3102 pushed, 1493 nodes popped in 675
+sentence1: <s> performen jerry taha gandhi matori post ud seram antar-bangsa mon </s>
+wseq1: <s> performen jerry taha gandhi matori post ud seram antar-bangsa mon </s>
+phseq1: sil | p @ r f o r m @ n | j e r i | t a h a | g a n d i | m a t o r i | p o s | u d | s @ r a m | a n t a r b a ng s a | m o n | sil
+cmscore1: 0.143 0.985 0.571 0.500 1.000 1.000 0.395 1.000 0.376 0.191 0.314 1.000
+score1: -22802.947266
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A020.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 133003 samples (8.31 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pagun gita marx harris alah temukan edi <nafas> kholik sd megawati strategic vi </s>
+pass1_best_wordseq: <s> pagun gita marx harris alah temukan edi <nafas> kholik sd megawati strategic vi </s>
+pass1_best_phonemeseq: sil | p a g u n | g i t a | m a r k s | h a r i s | a l a h | t @ m u k a n | e d i | sil | kh o l i k | e s d e | m e g a w a t i | s t r a t @ g i k | f i | sil
+pass1_best_score: -27899.412109
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 16517 generated, 4373 pushed, 1864 nodes popped in 829
+sentence1: <s> pagun gita marx harris alah temukan edi <nafas> kolexi d megawati strategic vi </s>
+wseq1: <s> pagun gita marx harris alah temukan edi <nafas> kolexi d megawati strategic vi </s>
+phseq1: sil | p a g u n | g i t a | m a r k s | h a r i s | a l a h | t @ m u k a n | e d i | sil | k o l e k s i | d e | m e g a w a t i | s t r a t @ g i k | f i | sil
+cmscore1: 0.162 0.543 0.742 0.627 0.708 0.773 0.403 0.160 0.113 0.445 0.192 1.000 1.000 0.391 1.000
+score1: -28734.103516
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A021.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 149988 samples (9.37 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pagu sidik ahmad anabolic jamal balfas terkemudian aman in-line me modul n sukamdani </s>
+pass1_best_wordseq: <s> pagu sidik ahmad anabolic jamal balfas terkemudian aman in-line me modul n sukamdani </s>
+pass1_best_phonemeseq: sil | p a g u | s i d i k | a h m a d | a n a b o l i k | j a m a l | b a l f a s | t @ r k @ m u d i a n | a m a n | i n l i n @ | m i | m o d u l | e n | s u k a m d a n i | sil
+pass1_best_score: -31424.181641
+### Recognition: 2nd pass (RL heuristic best-first)
+WARNING: 00 _default: num of popped hypotheses reached the limit (2000)
+WARNING: 00 _default: got no candidates, search failed
+STAT: 00 _default: 12287 generated, 5728 pushed, 2000 nodes popped in 935
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A022.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 114421 samples (7.15 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A023.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 89594 samples (5.60 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> tahunya h mengembangbiakkan mas monika </s>
+pass1_best_wordseq: <s> tahunya h mengembangbiakkan mas monika </s>
+pass1_best_phonemeseq: sil | t a h u ny a | h a | m @ ng @ m b a ng b i a k k a n | m a s | m o n i k a | sil
+pass1_best_score: -17830.304688
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 481 generated, 481 pushed, 96 nodes popped in 558
+sentence1: <s> tahu-tahu2 mengembangbiakkan monika </s>
+wseq1: <s> tahu-tahu2 mengembangbiakkan monika </s>
+phseq1: sil | t a h u t a h u | m @ ng @ m b a ng b i a k k a n | m o n i k a | sil
+cmscore1: 0.139 0.025 0.035 0.648 1.000
+score1: -18110.671875
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A024.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 107055 samples (6.69 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A025.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 90224 samples (5.64 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pahat ma.ngan berto batari putauw harun </s>
+pass1_best_wordseq: <s> pahat ma.ngan berto batari putauw harun </s>
+pass1_best_phonemeseq: sil | p a h a t | m a ng a n | b @ r t o | b a t a r i | p u t au | h a r u n | sil
+pass1_best_score: -17340.939453
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2695 generated, 1162 pushed, 467 nodes popped in 562
+sentence1: <s> pahat ma.ngan berto batari putauw harun </s>
+wseq1: <s> pahat ma.ngan berto batari putauw harun </s>
+phseq1: sil | p a h a t | m a ng a n | b @ r t o | b a t a r i | p u t au | h a r u n | sil
+cmscore1: 0.121 0.414 0.801 0.913 0.346 0.465 0.708 1.000
+score1: -17794.208984
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A026.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 87110 samples (5.44 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> kamar siti namanya bu benar cita-cita </s>
+pass1_best_wordseq: <s> kamar siti namanya bu benar cita-cita </s>
+pass1_best_phonemeseq: sil | k a m a r | s i t i | n a m a ny a | b u | b e n a r | c i t a c i t a | sil
+pass1_best_score: -17050.525391
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 506 generated, 506 pushed, 110 nodes popped in 542
+sentence1: <s> kamar siti namanya bu benar-benar </s>
+wseq1: <s> kamar siti namanya bu benar-benar </s>
+phseq1: sil | k a m a r | s i t i | n a m a ny a | b u | b e n a r b e n a r | sil
+cmscore1: 0.621 1.000 0.940 0.785 0.710 0.156 1.000
+score1: -17364.140625
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A027.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 112223 samples (7.01 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A028.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 99611 samples (6.23 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> thaliban suwandi aku pendar-pendar didi </s>
+pass1_best_wordseq: <s> thaliban suwandi aku pendar-pendar didi </s>
+pass1_best_phonemeseq: sil | t a l i b a n | s u w a n d i | k u | p @ n d a r p @ n d a r | d i d i | sil
+pass1_best_score: -20701.468750
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 5187 generated, 1521 pushed, 485 nodes popped in 621
+sentence1: <s> thaliban suwandi aku pondokmelati didi </s>
+wseq1: <s> thaliban suwandi aku pondokmelati didi </s>
+phseq1: sil | t a l i b a n | s u w a n d i | k u | p o n d o k m @ l a t i | d i d i | sil
+cmscore1: 0.057 1.000 0.160 0.652 0.420 0.481 1.000
+score1: -20999.738281
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A029.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 85402 samples (5.34 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> perbangkan aku iii tank melly jacksen </s>
+pass1_best_wordseq: <s> perbangkan aku iii tank melly jacksen </s>
+pass1_best_phonemeseq: sil | p @ r b a ng k a n | k u | t i g a | t a ng | m e l i | j e k s @ n | sil
+pass1_best_score: -16489.312500
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 5379 generated, 1916 pushed, 690 nodes popped in 532
+sentence1: <s> perbangkan aku iii tank mencek sunu </s>
+wseq1: <s> perbangkan aku iii tank mencek sunu </s>
+phseq1: sil | p @ r b a ng k a n | k u | t i g a | t a ng | m @ n c e k | s u n u | sil
+cmscore1: 0.109 1.000 0.589 0.636 0.376 0.275 0.380 1.000
+score1: -16938.712891
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A030.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 86569 samples (5.41 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A031.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 98414 samples (6.15 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A032.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 104917 samples (6.56 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A033.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 91798 samples (5.74 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A034.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 83651 samples (5.23 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A035.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 99007 samples (6.19 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ketiiganya d gender civitas lpg kurdi </s>
+pass1_best_wordseq: <s> ketiiganya d gender civitas lpg kurdi </s>
+pass1_best_phonemeseq: sil | k @ t i g a ny a | d @ | j e n d @ r | s i f i t a s | e l p i j i | k u r d i | sil
+pass1_best_score: -19738.636719
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1618 generated, 1063 pushed, 421 nodes popped in 617
+sentence1: <s> ketiiganya b gender civitas lpg kurdi </s>
+wseq1: <s> ketiiganya b gender civitas lpg kurdi </s>
+phseq1: sil | k @ t i g a ny a | b @ | j e n d @ r | s i f i t a s | e l p i j i | k u r d i | sil
+cmscore1: 0.286 0.580 0.181 0.468 1.000 0.489 0.603 1.000
+score1: -20181.162109
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A036.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 116101 samples (7.26 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ketiiganya dede marthen soemali den jaman penisilin jean gq </s>
+pass1_best_wordseq: <s> ketiiganya dede marthen soemali den jaman penisilin jean gq </s>
+pass1_best_phonemeseq: sil | k @ t i g a ny a | d e d e | m a r t e n | s u m a l i | d e n | j a m a n | p e n i s i l i n | j e n | g e k i | sil
+pass1_best_score: -23378.337891
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3679 generated, 1967 pushed, 963 nodes popped in 724
+sentence1: <s> ketiiganya dede marthen soemali den jaman kondisinya den gq </s>
+wseq1: <s> ketiiganya dede marthen soemali den jaman kondisinya den gq </s>
+phseq1: sil | k @ t i g a ny a | d e d e | m a r t e n | s u m a l i | d e n | j a m a n | k o n d i s i ny a | d e n | g e k i | sil
+cmscore1: 0.192 1.000 0.752 0.766 0.355 0.761 0.516 0.203 0.131 0.477 1.000
+score1: -23964.640625
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A037.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 131203 samples (8.20 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> taksi teman-teman shanty bhuwana d moetojib ahmad fauzi thaysu harun jin </s>
+pass1_best_wordseq: <s> taksi teman-teman shanty bhuwana d moetojib ahmad fauzi thaysu harun jin </s>
+pass1_best_phonemeseq: sil | t a k s i | t @ m a n t @ m a n | s a n t i | b u w a n a | d @ | m u t o y i b | a h m a d | f a u z i | t a y s u | h a r u n | j i n | sil
+pass1_best_score: -26701.855469
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 8673 generated, 3122 pushed, 1562 nodes popped in 818
+sentence1: <s> taksi teman-teman shanty bumerang d moetojib ahmad fauzi thaysu harun jin </s>
+wseq1: <s> taksi teman-teman shanty bumerang d moetojib ahmad fauzi thaysu harun jin </s>
+phseq1: sil | t a k s i | t @ m a n t @ m a n | s a n t i | b u m @ r a ng | d @ | m u t o y i b | a h m a d | f a u z i | t a y s u | h a r u n | j i n | sil
+cmscore1: 0.202 0.649 1.000 0.406 0.217 0.490 0.882 0.815 0.528 0.609 0.784 0.273 1.000
+score1: -27507.224609
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A038.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 123393 samples (7.71 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A039.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 85848 samples (5.37 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A040.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 95750 samples (5.98 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> peti fans asep m kesejahteraan fcv umum </s>
+pass1_best_wordseq: <s> peti fans asep m kesejahteraan fcv umum </s>
+pass1_best_phonemeseq: sil | p @ t i | f a n s | a s @ p | e m | k @ s @ j a h t @ r a a n | f c f | u m u m | sil
+pass1_best_score: -19051.580078
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3419 generated, 1818 pushed, 594 nodes popped in 596
+sentence1: <s> peti fans slt. kesejahteraan fcv umum </s>
+wseq1: <s> peti fans slt. kesejahteraan fcv umum </s>
+phseq1: sil | p @ t i | f a n s | e s e l t e | k @ s @ j a h t @ r a a n | f c f | u m u m | sil
+cmscore1: 0.601 0.521 1.000 0.229 1.000 0.374 0.531 1.000
+score1: -19439.519531
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A041.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 93112 samples (5.82 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A042.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 111313 samples (6.96 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A043.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 96433 samples (6.03 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> paku mamiek opek ummat iva pert i.v. petrov </s>
+pass1_best_wordseq: <s> paku mamiek opek ummat iva pert i.v. petrov </s>
+pass1_best_phonemeseq: sil | p a k u | m a m i k | o p e k | u m a t | i f a | p @ r t | i f | p @ t r o f | sil
+pass1_best_score: -19104.113281
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 746 generated, 746 pushed, 459 nodes popped in 601
+sentence1: <s> paku mamiek opek ultra pert i.v. petrov </s>
+wseq1: <s> paku mamiek opek ultra pert i.v. petrov </s>
+phseq1: sil | p a k u | m a m i k | o p e k | u l t r a | p @ r t | i f | p @ t r o f | sil
+cmscore1: 0.198 1.000 0.852 0.585 0.053 1.000 0.500 1.000 1.000
+score1: -19651.421875
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A044.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 92246 samples (5.77 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> paku henry marco qasim </s>
+pass1_best_wordseq: <s> paku henry marco qasim </s>
+pass1_best_phonemeseq: sil | p a k u | h e n r i | m a r k o | k a s i m | sil
+pass1_best_score: -11544.205078
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 244 generated, 244 pushed, 20 nodes popped in 575
+sentence1: <s> paku henry makro qasim </s>
+wseq1: <s> paku henry makro qasim </s>
+phseq1: sil | p a k u | h e n r i | m a k r o | k a s i m | sil
+cmscore1: 0.176 0.567 0.250 0.167 0.672 1.000
+score1: -18531.421875
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A045.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 80914 samples (5.06 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A046.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 93554 samples (5.85 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> kamar panter penyamaan devisi murtini yudi mamai yad </s>
+pass1_best_wordseq: <s> kamar panter penyamaan devisi murtini yudi mamai yad </s>
+pass1_best_phonemeseq: sil | k a m a r | p a n t @ r | p @ ny a m a a n | d e f i s i | m u r t i n i | y u d i | m a m ai | y a d | sil
+pass1_best_score: -18954.812500
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4105 generated, 1125 pushed, 545 nodes popped in 583
+sentence1: <s> kamar panter penyamaan devisi murtini yudi mana yad </s>
+wseq1: <s> kamar panter penyamaan devisi murtini yudi mana yad </s>
+phseq1: sil | k a m a r | p a n t @ r | p @ ny a m a a n | d e f i s i | m u r t i n i | y u d i | m a n a | y a d | sil
+cmscore1: 0.202 1.000 0.582 1.000 0.912 1.000 0.320 0.526 1.000 1.000
+score1: -19536.320312
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A047.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 86770 samples (5.42 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> kamar dyah palam shihab f yad jangan apan </s>
+pass1_best_wordseq: <s> kamar dyah palam shihab f yad jangan apan </s>
+pass1_best_phonemeseq: sil | k a m a r | d i a h | p a l a m | s i h a b | e f | y a d | j a ng a n | a p a n | sil
+pass1_best_score: -16761.115234
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 7554 generated, 2377 pushed, 1080 nodes popped in 540
+sentence1: <s> kamar dyah palam shihab ahyar jangan aman </s>
+wseq1: <s> kamar dyah palam shihab ahyar jangan aman </s>
+phseq1: sil | k a m a r | d i a h | p a l a m | s i h a b | a h y a r | j a ng a n | a m a n | sil
+cmscore1: 0.307 0.795 0.997 0.577 0.614 0.119 0.639 0.249 1.000
+score1: -17307.425781
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A048.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 89460 samples (5.59 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> keiekap mata </s>
+pass1_best_wordseq: <s> keiekap mata </s>
+pass1_best_phonemeseq: sil | k @ l @ m a k k @ l @ m e k | m a t a | sil
+pass1_best_score: -11882.151367
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 25 generated, 25 pushed, 6 nodes popped in 557
+sentence1: <s> keiekap beratha </s>
+wseq1: <s> keiekap beratha </s>
+phseq1: sil | k @ l @ m a k k @ l @ m e k | b e r a t a | sil
+cmscore1: 0.335 1.000 0.237 1.000
+score1: -18247.587891
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A049.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 133507 samples (8.34 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A050.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 101797 samples (6.36 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A051.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 91515 samples (5.72 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A052.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 102858 samples (6.43 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> tarik sanksi dorojatun ib memekakan mahmudin sutomo </s>
+pass1_best_wordseq: <s> tarik sanksi dorojatun ib memekakan mahmudin sutomo </s>
+pass1_best_phonemeseq: sil | t a r i k | s a ng s i | d o r o j a t u n | t @ | m @ m @ k a k k a n | m a h m u d i n | s u t o m o | sil
+pass1_best_score: -20523.802734
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 6503 generated, 2076 pushed, 1022 nodes popped in 641
+sentence1: <s> tarik sanksi dorojatun ib memekakan mahmudin sutomo </s>
+wseq1: <s> tarik sanksi dorojatun ib memekakan mahmudin sutomo </s>
+phseq1: sil | t a r i k | s a ng s i | d o r o j a t u n | t @ | m @ m @ k a k k a n | m a h m u d i n | s u t o m o | sil
+cmscore1: 0.196 0.332 1.000 0.596 0.348 1.000 0.698 0.283 1.000
+score1: -21049.332031
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A053.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 100340 samples (6.27 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A054.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 105114 samples (6.57 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A055.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 113997 samples (7.12 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A056.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 105481 samples (6.59 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A057.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 106236 samples (6.64 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A058.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 88702 samples (5.54 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> thamrin kecamatan ammonium gappri bum </s>
+pass1_best_wordseq: <s> thamrin kecamatan ammonium gappri bum </s>
+pass1_best_phonemeseq: sil | t a m r i n | k @ c a m a t a n | a m o n i u m | g a p r i | b u m | sil
+pass1_best_score: -17954.193359
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1787 generated, 871 pushed, 373 nodes popped in 552
+sentence1: <s> thamrin kecamatan amrozi gappri dong </s>
+wseq1: <s> thamrin kecamatan amrozi gappri dong </s>
+phseq1: sil | t a m r i n | k @ c a m a t a n | a m r o z i | g a p r i | d o ng | sil
+cmscore1: 0.180 1.000 1.000 0.024 0.424 0.270 1.000
+score1: -18294.931641
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A059.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 87820 samples (5.49 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A060.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 107465 samples (6.72 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> teman-teman detik umum ntb m ntb m suja pa.das jansen </s>
+pass1_best_wordseq: <s> teman-teman detik umum ntb m ntb m suja pa.das jansen </s>
+pass1_best_phonemeseq: sil | t @ m a n t @ m a n | d @ t i k | u m u m | e n t | e m | e n t | e m | s u j a | p a d a s | j a n s @ n | sil
+pass1_best_score: -21249.109375
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 8822 generated, 2749 pushed, 1321 nodes popped in 670
+sentence1: <s> teman-teman detik umum ntb m ntb m suja pa.das jansen </s>
+wseq1: <s> teman-teman detik umum ntb m ntb m suja pa.das jansen </s>
+phseq1: sil | t @ m a n t @ m a n | d @ t i k | u m u m | e n t | e m | e n t | e m | s u j a | p a d a s | j a n s @ n | sil
+cmscore1: 0.227 0.896 0.286 0.804 0.772 0.365 0.730 0.378 0.758 0.579 0.280 1.000
+score1: -21999.173828
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A061.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 81881 samples (5.12 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A062.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 86291 samples (5.39 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A063.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 73940 samples (4.62 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pandji gade is ari me monumen </s>
+pass1_best_wordseq: <s> pandji gade is ari me monumen </s>
+pass1_best_phonemeseq: sil | p a n j i | g e d | i s | a r i | m i | m o n u m e n | sil
+pass1_best_score: -14133.854492
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 6939 generated, 1872 pushed, 750 nodes popped in 460
+sentence1: <s> pandji ged isac dilli monumen </s>
+wseq1: <s> pandji ged isac dilli monumen </s>
+phseq1: sil | p a n j i | g e d | i s a k | d i l i | m o n u m e n | sil
+cmscore1: 0.106 0.414 0.477 0.422 0.117 0.421 1.000
+score1: -14525.286133
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A064.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 110896 samples (6.93 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pandjaitan sekjen testimoniun kadis set-up ave me.ma.cu aman me </s>
+pass1_best_wordseq: <s> pandjaitan sekjen testimoniun kadis set-up ave me.ma.cu aman me </s>
+pass1_best_phonemeseq: sil | p a n j a i t a n | s e k j e n | t @ s t i m o n i u n | k a d i s | s @ t u p | a f @ | m @ m a c u | a m a n | m i | sil
+pass1_best_score: -22651.687500
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2980 generated, 2219 pushed, 1064 nodes popped in 691
+sentence1: <s> pandjaitan sekjen testimoniun kadis sepekan-- for me.ma.cu aman </s>
+wseq1: <s> pandjaitan sekjen testimoniun kadis sepekan-- for me.ma.cu aman </s>
+phseq1: sil | p a n j a i t a n | s e k j e n | t @ s t i m o n i u n | k a d i s | s @ p @ k a n | f o r | m @ m a c u | a m a n | sil
+cmscore1: 0.258 0.941 0.498 1.000 0.532 0.807 0.201 1.000 0.061 1.000
+score1: -23172.052734
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A065.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 104815 samples (6.55 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A066.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 129657 samples (8.10 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> keaneka-ragaman pt fi gender marty bhesi den di-edit enggak pethohlana </s>
+pass1_best_wordseq: <s> keaneka-ragaman pt fi gender marty bhesi den di-edit enggak pethohlana </s>
+pass1_best_phonemeseq: sil | k @ a n e k a r a g a m a n | p e | f i | j e n d @ r | m a r t i | b e s i | d e n | d i e d i t | @ ng g a | p @ t o h l a n a | sil
+pass1_best_score: -26140.687500
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 7945 generated, 2854 pushed, 1050 nodes popped in 808
+sentence1: <s> keaneka-ragaman pt fi gender matius den di-edit enggak pethohlana </s>
+wseq1: <s> keaneka-ragaman pt fi gender matius den di-edit enggak pethohlana </s>
+phseq1: sil | k @ a n e k a r a g a m a n | p e | f i | j e n d @ r | m a t i u s | d e n | d i e d i t | @ ng g a | p @ t o h l a n a | sil
+cmscore1: 0.138 0.952 0.581 0.172 0.525 0.220 0.522 0.775 0.510 1.000 1.000
+score1: -26805.662109
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A067.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 129316 samples (8.08 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A068.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 90787 samples (5.67 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> thamrin benny mengakibatkan permasha natan john berty </s>
+pass1_best_wordseq: <s> thamrin benny mengakibatkan permasha natan john berty </s>
+pass1_best_phonemeseq: sil | t a m r i n | b @ n i | m @ ng a k i b a t k a n | p @ r m a s a | n a t a n | j o n | b @ r t i | sil
+pass1_best_score: -18167.541016
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4595 generated, 1177 pushed, 539 nodes popped in 565
+sentence1: <s> thamrin benny mengakibatkan permasha natan john berty </s>
+wseq1: <s> thamrin benny mengakibatkan permasha natan john berty </s>
+phseq1: sil | t a m r i n | b @ n i | m @ ng a k i b a t k a n | p @ r m a s a | n a t a n | j o n | b @ r t i | sil
+cmscore1: 0.258 1.000 0.333 0.851 1.000 0.815 0.472 0.610 1.000
+score1: -18625.582031
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A069.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 106896 samples (6.68 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A070.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 95598 samples (5.97 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> kendaraan gunter den cibiran iii dedi </s>
+pass1_best_wordseq: <s> kendaraan gunter den cibiran iii dedi </s>
+pass1_best_phonemeseq: sil | k @ n d a r a a n | g u n t @ r | d e n | c i b i r a n | t i g a | d e d i | sil
+pass1_best_score: -18831.242188
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 5779 generated, 2427 pushed, 751 nodes popped in 595
+sentence1: <s> kendaraan untaet ntbm iii dedi </s>
+wseq1: <s> kendaraan untaet ntbm iii dedi </s>
+phseq1: sil | k @ n d a r a a n | u n t a e t | e n t e b e e m | t i g a | d e d i | sil
+cmscore1: 0.252 0.803 0.050 0.061 0.467 0.467 1.000
+score1: -19159.662109
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A071.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 127063 samples (7.94 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pam.pan gubernur umum permanen soemani <nafas> pakem hardi rm bersama-sama remi maag </s>
+pass1_best_wordseq: <s> pam.pan gubernur umum permanen soemani <nafas> pakem hardi rm bersama-sama remi maag </s>
+pass1_best_phonemeseq: sil | p a m p a n | g u b @ r n u r | u m u m | p @ r m a n e n | s u m a n i | sil | p a k @ m | h a r d i | e r e m | b e r s a m a s a m a | r e m i | m a h | sil
+pass1_best_score: -26190.332031
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 12352 generated, 3445 pushed, 1736 nodes popped in 792
+sentence1: <s> pam.pan gubernur umum permanen soemani <nafas> pakem hardi rm bersama-sama remi maag </s>
+wseq1: <s> pam.pan gubernur umum permanen soemani <nafas> pakem hardi rm bersama-sama remi maag </s>
+phseq1: sil | p a m p a n | g u b @ r n u r | u m u m | p @ r m a n e n | s u m a n i | sil | p a k @ m | h a r d i | e r e m | b e r s a m a s a m a | r e m i | m a h | sil
+cmscore1: 0.102 0.632 1.000 0.525 1.000 0.284 0.113 1.000 0.425 0.566 0.997 0.215 1.000 1.000
+score1: -27088.769531
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A072.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 101433 samples (6.34 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A073.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 85602 samples (5.35 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> kepadamu salahuddin me-review </s>
+pass1_best_wordseq: <s> kepadamu salahuddin me-review </s>
+pass1_best_phonemeseq: sil | k @ p a d a m u | s a l a h u d i n | m @ r e f y u | sil
+pass1_best_score: -16176.269531
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 348 generated, 348 pushed, 54 nodes popped in 533
+sentence1: <s> kepadamu salahuddin me-review </s>
+wseq1: <s> kepadamu salahuddin me-review </s>
+phseq1: sil | k @ p a d a m u | s a l a h u d i n | m @ r e f y u | sil
+cmscore1: 0.128 0.978 0.267 1.000 1.000
+score1: -16412.066406
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A074.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 111685 samples (6.98 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A075.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 90711 samples (5.67 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> kepadamu ribut </s>
+pass1_best_wordseq: <s> kepadamu ribut </s>
+pass1_best_phonemeseq: sil | k @ p a d a m u | r i b u t | sil
+pass1_best_score: -12322.959961
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 23 generated, 23 pushed, 5 nodes popped in 565
+sentence1: <s> kepadamu ribut </s>
+wseq1: <s> kepadamu ribut </s>
+phseq1: sil | k @ p a d a m u | r i b u t | sil
+cmscore1: 0.113 1.000 1.000 1.000
+score1: -17396.718750
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A076.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 57301 samples (3.58 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ke.be.ra.gam.an </s>
+pass1_best_wordseq: <s> ke.be.ra.gam.an </s>
+pass1_best_phonemeseq: sil | k @ b @ r a g a m a n | sil
+pass1_best_score: -10710.208008
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 13 generated, 13 pushed, 4 nodes popped in 356
+sentence1: <s> ke.be.ra.gam.an </s>
+wseq1: <s> ke.be.ra.gam.an </s>
+phseq1: sil | k @ b @ r a g a m a n | sil
+cmscore1: 0.483 1.000 1.000
+score1: -10796.070312
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A077.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 100100 samples (6.26 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> tatapan-tatapan att kiai dikedip-kedip jangan me </s>
+pass1_best_wordseq: <s> tatapan-tatapan att kiai dikedip-kedip jangan me </s>
+pass1_best_phonemeseq: sil | t a t a p a n t a t a p a n | a t @ t @ | k i y ai | d i k @ d i p k @ d i p | j a ng a n | m i | sil
+pass1_best_score: -19964.496094
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1418 generated, 1037 pushed, 254 nodes popped in 624
+sentence1: <s> tatapan-tatapan att kiai dikedip-kedip jangan me </s>
+wseq1: <s> tatapan-tatapan att kiai dikedip-kedip jangan me </s>
+phseq1: sil | t a t a p a n t a t a p a n | a t @ t @ | k i y ai | d i k @ d i p k @ d i p | j a ng a n | m i | sil
+cmscore1: 0.197 0.368 0.552 0.634 0.869 0.839 0.540 1.000
+score1: -20275.064453
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A078.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 106317 samples (6.64 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pakar berperanan enggak mem.pe.ra.ga.kan josef benar </s>
+pass1_best_wordseq: <s> pakar berperanan enggak mem.pe.ra.ga.kan josef benar </s>
+pass1_best_phonemeseq: sil | p a k a r | b e r p e r a n a n | @ ng g a | m @ m p @ r a g a k a n | j o s e f | b e n a r | sil
+pass1_best_score: -21675.941406
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2565 generated, 1230 pushed, 421 nodes popped in 662
+sentence1: <s> pakar berperanan enggak mempertaruhkan josef benar </s>
+wseq1: <s> pakar berperanan enggak mempertaruhkan josef benar </s>
+phseq1: sil | p a k a r | b e r p e r a n a n | @ ng g a | m @ m p @ r t a r u h k a n | j o s e f | b e n a r | sil
+cmscore1: 0.578 1.000 0.260 0.343 0.247 0.900 0.724 1.000
+score1: -21976.013672
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A079.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 66038 samples (4.13 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A080.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 90666 samples (5.67 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A081.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 82211 samples (5.14 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pervidya furqan frans tik didiet ud </s>
+pass1_best_wordseq: <s> pervidya furqan frans tik didiet ud </s>
+pass1_best_phonemeseq: sil | p @ r f i d i a | f u r k a n | f r a n s | t e i | d i d i t | u d | sil
+pass1_best_score: -16765.011719
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2034 generated, 1229 pushed, 556 nodes popped in 512
+sentence1: <s> pervidya furqan frans tik gituh </s>
+wseq1: <s> pervidya furqan frans tik gituh </s>
+phseq1: sil | p @ r f i d i a | f u r k a n | f r a n s | t e i | g i t u h | sil
+cmscore1: 0.107 1.000 0.717 0.578 0.333 0.144 1.000
+score1: -16929.470703
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A082.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 80923 samples (5.06 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> p persindotama konfrensi aku </s>
+pass1_best_wordseq: <s> p persindotama konfrensi aku </s>
+pass1_best_phonemeseq: sil | p @ | p @ r s i n d o t a m a | k o n f r e n s i | k u | sil
+pass1_best_score: -16500.300781
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4289 generated, 980 pushed, 248 nodes popped in 504
+sentence1: <s> pt persindotama konfrensi aku </s>
+wseq1: <s> pt persindotama konfrensi aku </s>
+phseq1: sil | p e | p @ r s i n d o t a m a | k o n f r e n s i | k u | sil
+cmscore1: 0.376 0.363 0.515 0.919 0.751 1.000
+score1: -16731.080078
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A083.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 79696 samples (4.98 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A084.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 75829 samples (4.74 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> terperinci moderen tjuk </s>
+pass1_best_wordseq: <s> terperinci moderen tjuk </s>
+pass1_best_phonemeseq: sil | t @ r p @ r i n c i | m o d e r @ n | c u k | sil
+pass1_best_score: -15154.700195
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 69 generated, 69 pushed, 15 nodes popped in 472
+sentence1: <s> terperinci moderen tjuk </s>
+wseq1: <s> terperinci moderen tjuk </s>
+phseq1: sil | t @ r p @ r i n c i | m o d e r @ n | c u k | sil
+cmscore1: 0.422 1.000 1.000 0.335 1.000
+score1: -15302.643555
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A085.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 86502 samples (5.41 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A086.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 105546 samples (6.60 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> paten perjuangkan kalvin d sys </s>
+pass1_best_wordseq: <s> paten perjuangkan kalvin d sys </s>
+pass1_best_phonemeseq: sil | p a t e n | p @ r j u a ng k a n | k a l f i n | d @ | s i s | sil
+pass1_best_score: -15745.005859
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3196 generated, 1002 pushed, 231 nodes popped in 658
+sentence1: <s> paten perjuangkan kalvin best sys </s>
+wseq1: <s> paten perjuangkan kalvin best sys </s>
+phseq1: sil | p a t e n | p @ r j u a ng k a n | k a l f i n | b @ s | s i s | sil
+cmscore1: 0.161 0.768 0.647 1.000 0.492 0.604 1.000
+score1: -22188.033203
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A087.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 102219 samples (6.39 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A088.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 81387 samples (5.09 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> paten havid awak umum memberitahu </s>
+pass1_best_wordseq: <s> paten havid awak umum memberitahu </s>
+pass1_best_phonemeseq: sil | p a t e n | h a f i d | a w a k | u m u m | m @ m b @ r i t a u | sil
+pass1_best_score: -15721.532227
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 5013 generated, 1503 pushed, 461 nodes popped in 507
+sentence1: <s> paten havid awak umum memberitahu </s>
+wseq1: <s> paten havid awak umum memberitahu </s>
+phseq1: sil | p a t e n | h a f i d | a w a k | u m u m | m @ m b @ r i t a u | sil
+cmscore1: 0.158 0.660 0.483 0.509 0.313 0.572 1.000
+score1: -16103.642578
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A089.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 96665 samples (6.04 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A090.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 128150 samples (8.01 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A091.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 123155 samples (7.70 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A092.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 100704 samples (6.29 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pertempuran-pertempuran ji <nafas> paduka gaffar mey enggak </s>
+pass1_best_wordseq: <s> pertempuran-pertempuran ji <nafas> paduka gaffar mey enggak </s>
+pass1_best_phonemeseq: sil | p @ r t @ m p u r a n p @ r t @ m p u r a n | j i | sil | p a d u k a | g a f a r | m e y | @ ng g a k | sil
+pass1_best_score: -20626.695312
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3946 generated, 1202 pushed, 410 nodes popped in 627
+sentence1: <s> pertempuran-pertempuran jin paduka ghazali enggak </s>
+wseq1: <s> pertempuran-pertempuran jin paduka ghazali enggak </s>
+phseq1: sil | p @ r t @ m p u r a n p @ r t @ m p u r a n | j i n | p a d u k a | g a z a l i | @ ng g a k | sil
+cmscore1: 0.615 0.710 0.001 0.512 0.127 1.000 1.000
+score1: -20931.595703
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A093.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 90503 samples (5.66 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ke.be.ra.gam.an sang hankristuti junaedi cyndi </s>
+pass1_best_wordseq: <s> ke.be.ra.gam.an sang hankristuti junaedi cyndi </s>
+pass1_best_phonemeseq: sil | k @ b @ r a g a m a n | s a ng | h a n k r i s t u t i | j u n a e d i | s i n d i | sil
+pass1_best_score: -18329.667969
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3139 generated, 1535 pushed, 682 nodes popped in 564
+sentence1: <s> ke.be.ra.gam.an sang hankristuti junadi cyndi </s>
+wseq1: <s> ke.be.ra.gam.an sang hankristuti junadi cyndi </s>
+phseq1: sil | k @ b @ r a g a m a n | s a ng | h a n k r i s t u t i | j u n a d i | s i n d i | sil
+cmscore1: 0.423 1.000 0.664 1.000 0.044 0.213 1.000
+score1: -18590.406250
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A094.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 89741 samples (5.61 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A095.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 72081 samples (4.51 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A096.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 96250 samples (6.02 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ketut ah ketenteraman e.f haji sunyoto v sven </s>
+pass1_best_wordseq: <s> ketut ah ketenteraman e.f haji sunyoto v sven </s>
+pass1_best_phonemeseq: sil | k @ t u t | a h | k @ t @ n t @ r a m a n | @ f | h a j i | s u ny o t o | f e | s @ f @ n | sil
+pass1_best_score: -19007.263672
+### Recognition: 2nd pass (RL heuristic best-first)
+WARNING: 00 _default: hypothesis stack exhausted, terminate search now
+STAT: 00 _default: 0 sentences have been found
+WARNING: 00 _default: got no candidates, search failed
+STAT: 00 _default: 3105 generated, 2017 pushed, 1032 nodes popped in 600
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A097.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 84866 samples (5.30 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A098.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 84773 samples (5.30 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> p petromaks berkarir muchid sidik angie las </s>
+pass1_best_wordseq: <s> p petromaks berkarir muchid sidik angie las </s>
+pass1_best_phonemeseq: sil | p @ | p @ t r o m a k s | b e r k a r i r | m u kh i d | s i d i k | @ n j i | l a s | sil
+pass1_best_score: -17770.990234
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4068 generated, 1718 pushed, 756 nodes popped in 528
+sentence1: <s> p petromaks berkarir muchid sidik angie las </s>
+wseq1: <s> p petromaks berkarir muchid sidik angie las </s>
+phseq1: sil | p @ | p @ t r o m a k s | b e r k a r i r | m u kh i d | s i d i k | @ n j i | l a s | sil
+cmscore1: 0.330 0.419 1.000 0.855 0.428 0.327 0.800 0.591 1.000
+score1: -18303.015625
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A099.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 66761 samples (4.17 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A100.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 81021 samples (5.06 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> peternak-peternak az ifi denny lien </s>
+pass1_best_wordseq: <s> peternak-peternak az ifi denny lien </s>
+pass1_best_phonemeseq: sil | p @ t @ r n a k p @ t @ r n a k | a z @ t | i f i | d e n i | l i n | sil
+pass1_best_score: -16298.264648
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1892 generated, 1387 pushed, 496 nodes popped in 504
+sentence1: <s> peternak-peternak az ifi denny lien </s>
+wseq1: <s> peternak-peternak az ifi denny lien </s>
+phseq1: sil | p @ t @ r n a k p @ t @ r n a k | a z @ t | i f i | d e n i | l i n | sil
+cmscore1: 0.647 1.000 0.999 0.840 0.193 0.481 1.000
+score1: -16609.123047
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A101.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 74587 samples (4.66 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A102.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 82919 samples (5.18 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A103.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 79702 samples (4.98 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A104.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 87446 samples (5.47 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A105.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 94351 samples (5.90 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> keterusterangan trendi yenny bu </s>
+pass1_best_wordseq: <s> keterusterangan trendi yenny bu </s>
+pass1_best_phonemeseq: sil | k @ t @ r u s t @ r a ng a n | t r e n d i | y e n i | b u | sil
+pass1_best_score: -13617.848633
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 113 generated, 113 pushed, 28 nodes popped in 588
+sentence1: <s> keterusterangan trendi inipun </s>
+wseq1: <s> keterusterangan trendi inipun </s>
+phseq1: sil | k @ t @ r u s t @ r a ng a n | t r e n d i | i n i p u n | sil
+cmscore1: 0.711 0.804 0.476 0.152 1.000
+score1: -19893.617188
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A106.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 106501 samples (6.66 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A107.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 90412 samples (5.65 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> komputer-komputer tabrani kuat att kamp </s>
+pass1_best_wordseq: <s> komputer-komputer tabrani kuat att kamp </s>
+pass1_best_phonemeseq: sil | k o m p u t @ r k o m p u t @ r | t a b r a n i | k u a t | a t @ t @ | k a m | sil
+pass1_best_score: -18317.398438
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1771 generated, 1252 pushed, 431 nodes popped in 563
+sentence1: <s> petugas-petugas tabrani kuat att kamp </s>
+wseq1: <s> petugas-petugas tabrani kuat att kamp </s>
+phseq1: sil | p @ t u g a s p @ t u g a s | t a b r a n i | k u a t | a t @ t @ | k a m | sil
+cmscore1: 0.245 0.560 0.518 0.652 0.858 0.278 1.000
+score1: -18618.867188
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A108.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 89998 samples (5.62 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A109.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 95285 samples (5.96 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A110.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 82801 samples (5.18 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> keterusterangan gara kok aka </s>
+pass1_best_wordseq: <s> keterusterangan gara kok aka </s>
+pass1_best_phonemeseq: sil | k @ t @ r u s t @ r a ng a n | g a r a | k o k | a k a | sil
+pass1_best_score: -16722.457031
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2111 generated, 932 pushed, 346 nodes popped in 516
+sentence1: <s> keterusterangan kok atta </s>
+wseq1: <s> keterusterangan kok atta </s>
+phseq1: sil | k @ t @ r u s t @ r a ng a n | k o k | a t a | sil
+cmscore1: 0.352 0.262 0.320 0.218 1.000
+score1: -16964.640625
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A111.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 99665 samples (6.23 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A112.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 72888 samples (4.56 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> p pethak ini sized ber-plat </s>
+pass1_best_wordseq: <s> p pethak ini sized ber-plat </s>
+pass1_best_phonemeseq: sil | p @ | p @ t a k | i n i | s ai s | b e r p l a t | sil
+pass1_best_score: -13675.314453
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2048 generated, 728 pushed, 122 nodes popped in 454
+sentence1: <s> p pethak ini sized ber-plat </s>
+wseq1: <s> p pethak ini sized ber-plat </s>
+phseq1: sil | p @ | p @ t a k | i n i | s ai s | b e r p l a t | sil
+cmscore1: 0.195 0.382 1.000 0.923 0.893 1.000 1.000
+score1: -13988.758789
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A113.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 77760 samples (4.86 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A114.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 73901 samples (4.62 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A115.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 87992 samples (5.50 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> p pocketnya kamar b sitepu kepadamu sitepu ktt </s>
+pass1_best_wordseq: <s> p pocketnya kamar b sitepu kepadamu sitepu ktt </s>
+pass1_best_phonemeseq: sil | p @ | p o k @ t ny a | k a m a r | b @ | s i t @ p u | k @ p a d a m u | s i t @ p u | k a t | sil
+pass1_best_score: -17628.996094
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4137 generated, 1942 pushed, 865 nodes popped in 548
+sentence1: <s> p pocketnya kamar sitepu kepadamu sitepu ktt </s>
+wseq1: <s> p pocketnya kamar sitepu kepadamu sitepu ktt </s>
+phseq1: sil | p @ | p o k @ t ny a | k a m a r | s i t @ p u | k @ p a d a m u | s i t @ p u | k a t | sil
+cmscore1: 0.126 0.394 1.000 0.083 0.929 1.000 0.797 0.262 1.000
+score1: -18173.664062
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A116.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 77358 samples (4.83 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A117.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 86645 samples (5.42 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A118.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 110051 samples (6.88 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A119.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 78894 samples (4.93 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ketenteraman f detuik mari </s>
+pass1_best_wordseq: <s> ketenteraman f detuik mari </s>
+pass1_best_phonemeseq: sil | k @ t @ n t @ r a m a n | e f | d @ t u i k | m a r i | sil
+pass1_best_score: -15574.993164
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 747 generated, 708 pushed, 141 nodes popped in 491
+sentence1: <s> ketenteraman f detuik mari </s>
+wseq1: <s> ketenteraman f detuik mari </s>
+phseq1: sil | k @ t @ n t @ r a m a n | e f | d @ t u i k | m a r i | sil
+cmscore1: 0.497 0.613 0.186 1.000 0.359 1.000
+score1: -15812.950195
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A120.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 90604 samples (5.66 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A121.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 66119 samples (4.13 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> keterpencilan afgan mari </s>
+pass1_best_wordseq: <s> keterpencilan afgan mari </s>
+pass1_best_phonemeseq: sil | k @ t @ r p @ n c i l a n | a f g a n | m a r i | sil
+pass1_best_score: -12782.602539
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 75 generated, 75 pushed, 13 nodes popped in 411
+sentence1: <s> keterpencilan afgan mari </s>
+wseq1: <s> keterpencilan afgan mari </s>
+phseq1: sil | k @ t @ r p @ n c i l a n | a f g a n | m a r i | sil
+cmscore1: 0.592 0.980 0.607 0.812 1.000
+score1: -12944.764648
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A122.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 67915 samples (4.24 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A123.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 69582 samples (4.35 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A124.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 94830 samples (5.93 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A125.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 78484 samples (4.91 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A126.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 82625 samples (5.16 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A127.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 134840 samples (8.43 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ketetapan rs aya-- dijadikan-nya semi muin ichsan kubu rekan-rekannya d permanen </s>
+pass1_best_wordseq: <s> ketetapan rs aya-- dijadikan-nya semi muin ichsan kubu rekan-rekannya d permanen </s>
+pass1_best_phonemeseq: sil | k @ t @ t a p a n | e r e s | a y a | d i j a d i k a n ny a | s @ m i | m u i n | i kh s a n | k u b u | r @ k a n r @ k a n ny a | d @ | p @ r m a n e n | sil
+pass1_best_score: -27908.519531
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 8465 generated, 3047 pushed, 1186 nodes popped in 841
+sentence1: <s> ketetapan rs aya-- dijadikan-nya semi ied kubu resultan d permanen </s>
+wseq1: <s> ketetapan rs aya-- dijadikan-nya semi ied kubu resultan d permanen </s>
+phseq1: sil | k @ t @ t a p a n | e r e s | a y a | d i j a d i k a n ny a | s @ m i | i d | k u b u | r @ s u l t a n | d @ | p @ r m a n e n | sil
+cmscore1: 0.168 0.477 0.352 0.573 1.000 0.045 0.003 0.786 0.062 0.561 0.874 1.000
+score1: -28570.582031
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A128.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 62224 samples (3.89 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> keputus-asaan sesi sang </s>
+pass1_best_wordseq: <s> keputus-asaan sesi sang </s>
+pass1_best_phonemeseq: sil | k @ p u t u s a s a a n | s e s i | s a ng | sil
+pass1_best_score: -12636.809570
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 246 generated, 246 pushed, 38 nodes popped in 387
+sentence1: <s> keputus-asaan sesi sang </s>
+wseq1: <s> keputus-asaan sesi sang </s>
+phseq1: sil | k @ p u t u s a s a a n | s e s i | s a ng | sil
+cmscore1: 0.311 1.000 0.767 0.343 1.000
+score1: -12860.759766
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A129.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 71286 samples (4.46 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> petugas-petugas sd h moed </s>
+pass1_best_wordseq: <s> petugas-petugas sd h moed </s>
+pass1_best_phonemeseq: sil | p @ t u g a s p @ t u g a s | e s d e | h a | m u d | sil
+pass1_best_score: -14338.841797
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 400 generated, 400 pushed, 56 nodes popped in 444
+sentence1: <s> petugas-petugas sd h moed </s>
+wseq1: <s> petugas-petugas sd h moed </s>
+phseq1: sil | p @ t u g a s p @ t u g a s | e s d e | h a | m u d | sil
+cmscore1: 0.361 0.976 0.519 0.406 1.000 1.000
+score1: -14532.511719
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A130.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 77530 samples (4.85 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A131.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 104282 samples (6.52 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> tentara-tentara mememenuhi jacoeb at enggak start-up mememenuhi aku moong </s>
+pass1_best_wordseq: <s> tentara-tentara mememenuhi jacoeb at enggak start-up mememenuhi aku moong </s>
+pass1_best_phonemeseq: sil | t @ n t a r a t @ n t a r a | m @ m @ n u h i | y a k u b | @ t | @ ng g a | s t a r t u p | m @ m @ n u h i | k u | m u ng | sil
+pass1_best_score: -21763.982422
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2928 generated, 1980 pushed, 802 nodes popped in 650
+sentence1: <s> pepelegi gemeresak mememenuhi jacoeb at enggak start-up mememenuhi moong </s>
+wseq1: <s> pepelegi gemeresak mememenuhi jacoeb at enggak start-up mememenuhi moong </s>
+phseq1: sil | p @ p @ l @ g i | g @ m @ r @ s a k | m @ m @ n u h i | y a k u b | @ t | @ ng g a | s t a r t u p | m @ m @ n u h i | m u ng | sil
+cmscore1: 0.190 0.713 0.027 1.000 0.265 0.675 0.482 1.000 0.102 0.724 1.000
+score1: -22334.685547
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A132.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 109805 samples (6.86 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A133.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 98988 samples (6.19 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A134.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 100751 samples (6.30 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A135.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 96316 samples (6.02 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ketenteraman pendhem ah menangkapnya mistery you </s>
+pass1_best_wordseq: <s> ketenteraman pendhem ah menangkapnya mistery you </s>
+pass1_best_phonemeseq: sil | k @ t @ n t @ r a m a n | p @ n d @ m | a h | m @ n a ng k a p ny a | m i s t @ r i | y u | sil
+pass1_best_score: -19632.830078
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 880 generated, 880 pushed, 326 nodes popped in 600
+sentence1: <s> ketenteraman pendhem ah menangkapnya mistery you </s>
+wseq1: <s> ketenteraman pendhem ah menangkapnya mistery you </s>
+phseq1: sil | k @ t @ n t @ r a m a n | p @ n d @ m | a h | m @ n a ng k a p ny a | m i s t @ r i | y u | sil
+cmscore1: 0.191 0.682 0.958 0.792 0.629 0.414 0.599 1.000
+score1: -20021.253906
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A136.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 104766 samples (6.55 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A137.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 116105 samples (7.26 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pa.di jaman kwik <nafas> penyamaan pengganjalan gerak angie sering moegi </s>
+pass1_best_wordseq: <s> pa.di jaman kwik <nafas> penyamaan pengganjalan gerak angie sering moegi </s>
+pass1_best_phonemeseq: sil | p a d i | j a m a n | k w i k | sil | p @ ny a m a a n | p @ ng g a n j a l a n | g @ r a k | @ n j i | s @ r i ng | m u g i | sil
+pass1_best_score: -23456.410156
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 9004 generated, 2863 pushed, 1168 nodes popped in 724
+sentence1: <s> pa.di jaman kwik <nafas> penyamaan terpancar-pancar angie sering murni </s>
+wseq1: <s> pa.di jaman kwik <nafas> penyamaan terpancar-pancar angie sering murni </s>
+phseq1: sil | p a d i | j a m a n | k w i k | sil | p @ ny a m a a n | t @ r p a n c a r p a n c a r | @ n j i | s @ r i ng | m u r n i | sil
+cmscore1: 0.256 0.449 0.503 0.581 0.113 1.000 0.206 1.000 0.376 0.160 1.000
+score1: -24065.519531
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A138.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 89117 samples (5.57 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> kanun uli gang-gang muttaqin enggak ksad kuantong anton </s>
+pass1_best_wordseq: <s> kanun uli gang-gang muttaqin enggak ksad kuantong anton </s>
+pass1_best_phonemeseq: sil | k a n u n | u l i | g a ng g a ng | m u t a k i n | @ ng g a | k a s a | k u a n t o ng | a n t o n | sil
+pass1_best_score: -17623.759766
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 5644 generated, 2538 pushed, 1132 nodes popped in 555
+sentence1: <s> kanun uli kamar muttaqin enggak ksad kuantong anton </s>
+wseq1: <s> kanun uli kamar muttaqin enggak ksad kuantong anton </s>
+phseq1: sil | k a n u n | u l i | k a m a r | m u t a k i n | @ ng g a | k a s a | k u a n t o ng | a n t o n | sil
+cmscore1: 0.561 0.474 0.440 0.328 0.457 0.502 0.312 0.352 0.534 1.000
+score1: -18226.191406
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A139.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 114705 samples (7.17 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A140.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 98728 samples (6.17 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> carsten karin gerak andri toh sugiri permanen </s>
+pass1_best_wordseq: <s> carsten karin gerak andri toh sugiri permanen </s>
+pass1_best_phonemeseq: sil | k a r s t @ n | k a r i n | g @ r a k | a n d r i | t o h | s u g i r i | p @ r m a n e n | sil
+pass1_best_score: -19801.517578
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3457 generated, 1845 pushed, 835 nodes popped in 615
+sentence1: <s> carsten karin gerak andri top sugiri permanen </s>
+wseq1: <s> carsten karin gerak andri top sugiri permanen </s>
+phseq1: sil | k a r s t @ n | k a r i n | g @ r a k | a n d r i | t o p | s u g i r i | p @ r m a n e n | sil
+cmscore1: 0.354 0.987 0.410 1.000 0.360 0.091 1.000 1.000 1.000
+score1: -20296.472656
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A141.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 89327 samples (5.58 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> ked menneg opek andjar satar numberi teng </s>
+pass1_best_wordseq: <s> ked menneg opek andjar satar numberi teng </s>
+pass1_best_phonemeseq: sil | k a e d e | m e n e g | o p e k | a n j a r | s a t a r | n u m b e r i | t e ng | sil
+pass1_best_score: -17857.099609
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2746 generated, 1778 pushed, 627 nodes popped in 556
+sentence1: <s> ked menneg opek andjar antar-menteri </s>
+wseq1: <s> ked menneg opek andjar antar-menteri </s>
+phseq1: sil | k a e d e | m e n e g | o p e k | a n j a r | a n t a r m e n t e r i | sil
+cmscore1: 0.348 0.289 0.191 0.495 0.876 0.106 1.000
+score1: -18249.419922
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A142.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 78081 samples (4.88 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A143.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 105919 samples (6.62 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> carsten enggak event-nya membezuk dick wynne <nafas> terjaring watt </s>
+pass1_best_wordseq: <s> carsten enggak event-nya membezuk dick wynne <nafas> terjaring watt </s>
+pass1_best_phonemeseq: sil | k a r s t @ n | @ ng g a k | @ f @ n t ny a | m @ m b @ s u k | d i k | w ai n | sil | t @ r j a r i ng | w a t | sil
+pass1_best_score: -21674.970703
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 7211 generated, 2613 pushed, 1330 nodes popped in 660
+sentence1: <s> carsten enggak event-nya membezuk dick wynne <nafas> terjaring watt </s>
+wseq1: <s> carsten enggak event-nya membezuk dick wynne <nafas> terjaring watt </s>
+phseq1: sil | k a r s t @ n | @ ng g a k | @ f @ n t ny a | m @ m b @ s u k | d i k | w ai n | sil | t @ r j a r i ng | w a t | sil
+cmscore1: 0.354 0.916 0.892 1.000 1.000 0.437 0.433 0.113 0.690 1.000 1.000
+score1: -22176.250000
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A144.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 119069 samples (7.44 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pasteur umar sang berty bach kemudahan-kemudahannya membabi-buta man </s>
+pass1_best_wordseq: <s> pasteur umar sang berty bach kemudahan-kemudahannya membabi-buta man </s>
+pass1_best_phonemeseq: sil | p a s t @ r | u m a r | s a ng | b @ r t i | b a kh | k @ m u d a h a n k @ m u d a h a n ny a | m @ m b a b i b u t a | m a n | sil
+pass1_best_score: -24197.564453
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3847 generated, 1544 pushed, 588 nodes popped in 742
+sentence1: <s> pasteur umar se.ma.kin bach kemudahan-kemudahannya membabi-buta man </s>
+wseq1: <s> pasteur umar se.ma.kin bach kemudahan-kemudahannya membabi-buta man </s>
+phseq1: sil | p a s t @ r | u m a r | s @ m a k i n | b a kh | k @ m u d a h a n k @ m u d a h a n ny a | m @ m b a b i b u t a | m a n | sil
+cmscore1: 0.112 1.000 0.453 0.261 0.975 0.759 1.000 0.745 1.000
+score1: -24665.085938
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A145.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 92524 samples (5.78 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A146.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 111794 samples (6.99 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A147.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 97180 samples (6.07 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> tauhidlah jansen pk me.ma.dam.kan pa.luh iii ji </s>
+pass1_best_wordseq: <s> tauhidlah jansen pk me.ma.dam.kan pa.luh iii ji </s>
+pass1_best_phonemeseq: sil | t au h i d l a h | j a n s @ n | p e k a | m @ m a d a m k a n | p a l u h | t i g a | j i | sil
+pass1_best_score: -19293.626953
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2420 generated, 1572 pushed, 547 nodes popped in 605
+sentence1: <s> tauhidlah jansen pk me.ma.dam.kan tanki dady </s>
+wseq1: <s> tauhidlah jansen pk me.ma.dam.kan tanki dady </s>
+phseq1: sil | t au h i d l a h | j a n s @ n | p e k a | m @ m a d a m k a n | t a ng k i | d a d i | sil
+cmscore1: 0.431 0.684 0.957 0.315 0.795 0.635 0.243 1.000
+score1: -19686.574219
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A148.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 91972 samples (5.75 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A149.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 142986 samples (8.94 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A150.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 131676 samples (8.23 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A151.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 97951 samples (6.12 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A152.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 136274 samples (8.52 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> qasim andhika shiah tekan-menekan aisa voor jin pemimpinku mayjen titik toh </s>
+pass1_best_wordseq: <s> qasim andhika shiah tekan-menekan aisa voor jin pemimpinku mayjen titik toh </s>
+pass1_best_phonemeseq: sil | k a s i m | a n d i k a | s i a h | t @ k a n m @ n @ k a n | a i s a | f u r | j i n | p @ m i m p i n k u | m ai j e n | t i t i k | t o h | sil
+pass1_best_score: -27342.236328
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 6294 generated, 2354 pushed, 1094 nodes popped in 850
+sentence1: <s> qasim andhika shiah tekan-menekan aisa voor jimp pemimpinku mayjen titik top </s>
+wseq1: <s> qasim andhika shiah tekan-menekan aisa voor jimp pemimpinku mayjen titik top </s>
+phseq1: sil | k a s i m | a n d i k a | s i a h | t @ k a n m @ n @ k a n | a i s a | f u r | j i m | p @ m i m p i n k u | m ai j e n | t i t i k | t o p | sil
+cmscore1: 0.587 0.552 0.222 0.785 0.704 0.772 0.369 0.175 0.964 1.000 0.566 0.056 1.000
+score1: -28043.882812
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A153.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 77880 samples (4.87 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> b giampiero migren benny gara </s>
+pass1_best_wordseq: <s> b giampiero migren benny gara </s>
+pass1_best_phonemeseq: sil | b @ | g i a m p i @ r o | m i g r e n | b @ n i | g a r a | sil
+pass1_best_score: -16200.631836
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1845 generated, 1273 pushed, 375 nodes popped in 485
+sentence1: <s> berdiam-diam migren benny gara </s>
+wseq1: <s> berdiam-diam migren benny gara </s>
+phseq1: sil | b e r d i a m d i a m | m i g r e n | b @ n i | g a r a | sil
+cmscore1: 0.484 0.430 0.920 0.211 0.272 1.000
+score1: -16444.251953
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A154.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 79411 samples (4.96 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> brigjend ghafur mustika pakan </s>
+pass1_best_wordseq: <s> brigjend ghafur mustika pakan </s>
+pass1_best_phonemeseq: sil | b r i g j e n | g a f u r | m u s t i k a | p a k a n | sil
+pass1_best_score: -15678.314453
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1539 generated, 855 pushed, 299 nodes popped in 494
+sentence1: <s> brigjend ghafur mustika pakan </s>
+wseq1: <s> brigjend ghafur mustika pakan </s>
+phseq1: sil | b r i g j e n | g a f u r | m u s t i k a | p a k a n | sil
+cmscore1: 0.108 1.000 0.492 0.809 0.367 1.000
+score1: -15985.342773
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A155.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 111971 samples (7.00 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A156.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 92443 samples (5.78 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A157.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 60991 samples (3.81 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> pemadatan f trend </s>
+pass1_best_wordseq: <s> pemadatan f trend </s>
+pass1_best_phonemeseq: sil | p @ m a d a t a n | e f | t r e n | sil
+pass1_best_score: -11158.590820
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 283 generated, 283 pushed, 31 nodes popped in 379
+sentence1: <s> pemadatan trend </s>
+wseq1: <s> pemadatan trend </s>
+phseq1: sil | p @ m a d a t a n | t r e n | sil
+cmscore1: 0.222 0.170 0.775 1.000
+score1: -11324.376953
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A158.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 84108 samples (5.26 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> benny manejemen box aman gani acara me </s>
+pass1_best_wordseq: <s> benny manejemen box aman gani acara me </s>
+pass1_best_phonemeseq: sil | b @ n i | m e n e j @ m e n | b o k s | a m a n | g a n i | a c a r a | m i | sil
+pass1_best_score: -17111.017578
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3689 generated, 2135 pushed, 769 nodes popped in 524
+sentence1: <s> benny manejemen box aman kamar me </s>
+wseq1: <s> benny manejemen box aman kamar me </s>
+phseq1: sil | b @ n i | m e n e j @ m e n | b o k s | a m a n | k a m a r | m i | sil
+cmscore1: 0.694 0.210 0.289 0.999 0.426 0.208 0.562 1.000
+score1: -17567.539062
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A159.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 86819 samples (5.43 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A160.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 78829 samples (4.93 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> benny manajemen2 aman krisna sekjen </s>
+pass1_best_wordseq: <s> benny manajemen2 aman krisna sekjen </s>
+pass1_best_phonemeseq: sil | b @ n i | m a n a j @ m e n | a m a n | k r i s n a | s e k j e n | sil
+pass1_best_score: -15330.863281
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1904 generated, 803 pushed, 154 nodes popped in 491
+sentence1: <s> benny manajemen2 aman krisna sekjen </s>
+wseq1: <s> benny manajemen2 aman krisna sekjen </s>
+phseq1: sil | b @ n i | m a n a j @ m e n | a m a n | k r i s n a | s e k j e n | sil
+cmscore1: 0.368 0.240 0.958 0.734 0.314 1.000 1.000
+score1: -15707.796875
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A161.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 77264 samples (4.83 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> benny mana fax ketiiganya me.mak.sa.kan </s>
+pass1_best_wordseq: <s> benny mana fax ketiiganya me.mak.sa.kan </s>
+pass1_best_phonemeseq: sil | b @ n i | m a n a | f a k s | k @ t i g a ny a | m @ m a k s a k a n | sil
+pass1_best_score: -15793.684570
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1749 generated, 708 pushed, 103 nodes popped in 481
+sentence1: <s> benny mana fax ketiiganya me.mak.sa.kan </s>
+wseq1: <s> benny mana fax ketiiganya me.mak.sa.kan </s>
+phseq1: sil | b @ n i | m a n a | f a k s | k @ t i g a ny a | m @ m a k s a k a n | sil
+cmscore1: 0.368 0.217 0.631 0.767 1.000 1.000 1.000
+score1: -16177.379883
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A162.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 70404 samples (4.40 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> b ginandjar feri se saking </s>
+pass1_best_wordseq: <s> b ginandjar feri se saking </s>
+pass1_best_phonemeseq: sil | b @ | g i n a n j a r | f e r i | e s e | s a k i ng | sil
+pass1_best_score: -13782.928711
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 5298 generated, 1767 pushed, 653 nodes popped in 438
+sentence1: <s> b ginandjar feri se saking </s>
+wseq1: <s> b ginandjar feri se saking </s>
+phseq1: sil | b @ | g i n a n j a r | f e r i | e s e | s a k i ng | sil
+cmscore1: 0.668 0.309 0.566 0.157 0.553 0.262 1.000
+score1: -14163.039062
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A163.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 107654 samples (6.73 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> penggemarnya koridor-koridor john syaifullah pa.mit anton thermal m.h </s>
+pass1_best_wordseq: <s> penggemarnya koridor-koridor john syaifullah pa.mit anton thermal m.h </s>
+pass1_best_phonemeseq: sil | p @ ng g @ m a r ny a | k o r i d o r k o r i d o r | j o n | sy a i f u l a h | p a m i t | a n t o n | t e r m a l | m h | sil
+pass1_best_score: -22355.773438
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 6098 generated, 2088 pushed, 756 nodes popped in 671
+sentence1: <s> penggemarnya koridor-koridor john syaifullah pa.mit anton thermal ant </s>
+wseq1: <s> penggemarnya koridor-koridor john syaifullah pa.mit anton thermal ant </s>
+phseq1: sil | p @ ng g @ m a r ny a | k o r i d o r k o r i d o r | j o n | sy a i f u l a h | p a m i t | a n t o n | t e r m a l | a n t | sil
+cmscore1: 0.585 0.936 0.659 0.347 0.244 0.231 0.876 0.694 0.117 1.000
+score1: -22798.888672
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A164.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 89392 samples (5.59 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A165.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 103097 samples (6.44 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A166.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 105803 samples (6.61 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A167.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 93421 samples (5.84 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A168.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 108755 samples (6.80 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A169.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 109028 samples (6.81 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A170.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 106028 samples (6.63 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A171.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 100516 samples (6.28 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> bang saini terpecah-belah tv riyad jaman merta membathin sang </s>
+pass1_best_wordseq: <s> bang saini terpecah-belah tv riyad jaman merta membathin sang </s>
+pass1_best_phonemeseq: sil | b a ng | s a i n i | t @ r p @ c a h b @ l a h | t i f i | r i y a d | j a m a n | m @ r t a | m @ m b a t i n | s a ng | sil
+pass1_best_score: -20828.570312
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4971 generated, 2212 pushed, 958 nodes popped in 626
+sentence1: <s> basri mi terpecah-belah tv riyad jaman moorden membathin sang </s>
+wseq1: <s> basri mi terpecah-belah tv riyad jaman moorden membathin sang </s>
+phseq1: sil | b a s r i | m i | t @ r p @ c a h b @ l a h | t i f i | r i y a d | j a m a n | m u r d @ n | m @ m b a t i n | s a ng | sil
+cmscore1: 0.418 0.192 0.147 0.649 0.416 0.539 0.393 0.137 1.000 0.493 1.000
+score1: -21465.171875
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A172.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 83951 samples (5.25 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> band sebelas iii menggedor-gedorkan umar man </s>
+pass1_best_wordseq: <s> band sebelas iii menggedor-gedorkan umar man </s>
+pass1_best_phonemeseq: sil | b @ n | s @ b @ l a s | t i g a | m @ ng g @ d o r g @ d o r k a n | u m a r | m a n | sil
+pass1_best_score: -17529.982422
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4101 generated, 1279 pushed, 617 nodes popped in 523
+sentence1: <s> band sebelas iii menggedor-gedorkan umar man </s>
+wseq1: <s> band sebelas iii menggedor-gedorkan umar man </s>
+phseq1: sil | b @ n | s @ b @ l a s | t i g a | m @ ng g @ d o r g @ d o r k a n | u m a r | m a n | sil
+cmscore1: 0.587 0.337 1.000 0.483 0.488 0.724 0.831 1.000
+score1: -17914.087891
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A173.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 84113 samples (5.26 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A174.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 118933 samples (7.43 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A175.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 112336 samples (7.02 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A176.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 97707 samples (6.11 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A177.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 121650 samples (7.60 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> bang konfensi mardy gomies yad inderanya benny bopeng megan den banknya g </s>
+pass1_best_wordseq: <s> bang konfensi mardy gomies yad inderanya benny bopeng megan den banknya g </s>
+pass1_best_phonemeseq: sil | b a ng | k o n f e n s i | m a r d i | g o m i s | y a d | i n d @ r a ny a | b @ n i | b o p @ ng | m e g a n | d e n | b a ng ny a | g e | sil
+pass1_best_score: -24477.679688
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 11913 generated, 4336 pushed, 1935 nodes popped in 758
+sentence1: <s> bang konfensi mardy gomies yad inderanya benny bopeng megan den banknya g </s>
+wseq1: <s> bang konfensi mardy gomies yad inderanya benny bopeng megan den banknya g </s>
+phseq1: sil | b a ng | k o n f e n s i | m a r d i | g o m i s | y a d | i n d @ r a ny a | b @ n i | b o p @ ng | m e g a n | d e n | b a ng ny a | g e | sil
+cmscore1: 0.275 0.506 0.392 0.239 0.297 1.000 0.618 0.519 1.000 0.300 0.507 0.878 0.394 1.000
+score1: -25318.560547
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A178.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 101695 samples (6.36 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> bang wal-mart merupakankeinginan feri yudi murni sit </s>
+pass1_best_wordseq: <s> bang wal-mart merupakankeinginan feri yudi murni sit </s>
+pass1_best_phonemeseq: sil | b a ng | w a l m a r t | m @ r u p a k a n k @ i ng i n a n | f e r i | y u d i | m u r n i | s i t | sil
+pass1_best_score: -20656.763672
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 3555 generated, 2114 pushed, 710 nodes popped in 634
+sentence1: <s> bang wal-mart merupakankeinginan sayuti moodie vit </s>
+wseq1: <s> bang wal-mart merupakankeinginan sayuti moodie vit </s>
+phseq1: sil | b a ng | w a l m a r t | m @ r u p a k a n k @ i ng i n a n | s a y u t i | m u d i | f i t | sil
+cmscore1: 0.267 0.581 0.970 0.971 0.125 0.100 0.442 1.000
+score1: -21060.859375
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A179.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 81187 samples (5.07 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> bang pemuras yad jum'at atik up-nya </s>
+pass1_best_wordseq: <s> bang pemuras yad jum'at atik up-nya </s>
+pass1_best_phonemeseq: sil | b a ng | p @ m u r a s | y a d | j u m a t | a t i k | u p ny a | sil
+pass1_best_score: -15587.203125
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 2069 generated, 751 pushed, 151 nodes popped in 505
+sentence1: <s> bang pemuras yad jum'at atik up-nya </s>
+wseq1: <s> bang pemuras yad jum'at atik up-nya </s>
+phseq1: sil | b a ng | p @ m u r a s | y a d | j u m a t | a t i k | u p ny a | sil
+cmscore1: 0.249 0.473 0.626 1.000 1.000 0.839 0.709 1.000
+score1: -15978.149414
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A180.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 112871 samples (7.05 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> band gembar-gembor nicky berjagajaga hoen khath angie vi uki kamp </s>
+pass1_best_wordseq: <s> band gembar-gembor nicky berjagajaga hoen khath angie vi uki kamp </s>
+pass1_best_phonemeseq: sil | b @ n | g @ m b a r g @ m b o r | n i k i | b e r j a g a j a g a | h u n | kh a t | @ n j i | f i | u k i | k a m | sil
+pass1_best_score: -23377.650391
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 11842 generated, 3819 pushed, 1635 nodes popped in 703
+sentence1: <s> band gembar-gembor nicky berjagajaga hoen khath angie vi uki kamp </s>
+wseq1: <s> band gembar-gembor nicky berjagajaga hoen khath angie vi uki kamp </s>
+phseq1: sil | b @ n | g @ m b a r g @ m b o r | n i k i | b e r j a g a j a g a | h u n | kh a t | @ n j i | f i | u k i | k a m | sil
+cmscore1: 0.236 0.628 0.955 0.312 0.801 0.306 1.000 0.164 0.142 0.454 0.474 1.000
+score1: -24129.666016
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A181.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 88436 samples (5.53 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A182.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 82250 samples (5.14 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A183.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 91029 samples (5.69 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> penyitaannya memateri iiiiv jansen j disetting </s>
+pass1_best_wordseq: <s> penyitaannya memateri iiiiv jansen j disetting </s>
+pass1_best_phonemeseq: sil | p @ ny i t a a n ny a | m @ m a t e r i | t i g a @ m p a t | j a n s @ n | j e | d i s @ t t i ng | sil
+pass1_best_score: -18287.304688
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 1126 generated, 777 pushed, 217 nodes popped in 567
+sentence1: <s> penyitaannya memateri iiiiv angie disetting </s>
+wseq1: <s> penyitaannya memateri iiiiv angie disetting </s>
+phseq1: sil | p @ ny i t a a n ny a | m @ m a t e r i | t i g a @ m p a t | @ n j i | d i s @ t t i ng | sil
+cmscore1: 0.154 0.815 0.357 0.921 0.271 0.591 1.000
+score1: -18605.310547
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A184.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 93466 samples (5.84 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> b berkebalikan sitepu ad terbakar-red shanty </s>
+pass1_best_wordseq: <s> b berkebalikan sitepu ad terbakar-red shanty </s>
+pass1_best_phonemeseq: sil | b @ | b e r k e b a l i k a n | s i t @ p u | m a | t @ r b a k a r r @ d | s a n t i | sil
+pass1_best_score: -19581.593750
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 8370 generated, 2734 pushed, 783 nodes popped in 582
+sentence1: <s> d berkebalikan situ ad terbakar-red sani </s>
+wseq1: <s> d berkebalikan situ ad terbakar-red sani </s>
+phseq1: sil | d @ | b e r k e b a l i k a n | s i t u | m a | t @ r b a k a r r @ d | s a n i | sil
+cmscore1: 0.196 0.068 0.616 0.287 0.443 0.667 0.231 1.000
+score1: -19907.544922
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A185.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 101441 samples (6.34 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A186.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 83519 samples (5.22 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+pass1_best: <s> bermassa me senjaya sri cukat amin </s>
+pass1_best_wordseq: <s> bermassa me senjaya sri cukat amin </s>
+pass1_best_phonemeseq: sil | b e r m a s a | m i | s @ n j a y a | s r i | c u k a t | a m i n | sil
+pass1_best_score: -17062.613281
+### Recognition: 2nd pass (RL heuristic best-first)
+STAT: 00 _default: 4374 generated, 1856 pushed, 709 nodes popped in 520
+sentence1: <s> berutas gani senjaya sri kuta tan </s>
+wseq1: <s> berutas gani senjaya sri kuta tan </s>
+phseq1: sil | b e r u t a s | g a n i | s @ n j a y a | s r i | k u t a | t a n | sil
+cmscore1: 0.472 0.173 0.165 0.878 0.167 0.312 0.503 1.000
+score1: -17463.976562
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A187.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 94334 samples (5.90 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
+### read waveform input
+Stat: adin_sndfile: input speechfile: ../training/dataset/train/A004/A11LTL004A188.wav
+Stat: adin_sndfile: input format = Microsoft WAV
+Stat: adin_sndfile: input type = Signed 16 bit PCM
+Stat: adin_sndfile: endian = file native endian
+Stat: adin_sndfile: 16000 Hz, 1 channels
+STAT: 92950 samples (5.81 sec.)
+STAT: ### speech analysis (waveform -> MFCC)
+### Recognition: 1st pass (LR beam)
+WARNING: 00 _default: no tail silence word survived on the last frame, search failed
+<search failed>
+
+
+------
